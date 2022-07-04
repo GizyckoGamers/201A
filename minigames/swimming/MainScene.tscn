@@ -1,0 +1,176 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://minigames/swimming/water.png" type="Texture" id=1]
+[ext_resource path="res://minigames/swimming/pomost.png" type="Texture" id=2]
+[ext_resource path="res://minigames/swimming/water_animation/water_animation_6.png" type="Texture" id=3]
+[ext_resource path="res://minigames/swimming/water_animation/water_animation_7.png" type="Texture" id=4]
+[ext_resource path="res://minigames/swimming/water_animation/water_animation_2.png" type="Texture" id=5]
+[ext_resource path="res://minigames/swimming/water_animation/water_animation_5.png" type="Texture" id=6]
+[ext_resource path="res://minigames/swimming/water_animation/water_animation_4.png" type="Texture" id=7]
+[ext_resource path="res://minigames/swimming/water_animation/water_animation_3.png" type="Texture" id=8]
+[ext_resource path="res://minigames/swimming/plywak_animation/plywak_przod.png" type="Texture" id=9]
+[ext_resource path="res://minigames/swimming/plywak_animation/plywak_tyl.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "splash",
+"speed": 6.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "swimming",
+"speed": 2.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+z_index = -1
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Pomost" type="Sprite" parent="."]
+z_index = 10
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Splash0" type="AnimatedSprite" parent="."]
+position = Vector2( 204, 673 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 6
+playing = true
+
+[node name="Splash1" type="AnimatedSprite" parent="."]
+position = Vector2( 527, 658 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 2
+playing = true
+
+[node name="Splash2" type="AnimatedSprite" parent="."]
+position = Vector2( 523, 208 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 4
+playing = true
+
+[node name="Splash3" type="AnimatedSprite" parent="."]
+position = Vector2( 1107, 258 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 6
+playing = true
+
+[node name="Splash4" type="AnimatedSprite" parent="."]
+position = Vector2( 434, 486 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 4
+playing = true
+
+[node name="Splash5" type="AnimatedSprite" parent="."]
+position = Vector2( 179, 497 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 2
+playing = true
+
+[node name="Splash6" type="AnimatedSprite" parent="."]
+position = Vector2( 923, 375 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 5
+playing = true
+
+[node name="Splash7" type="AnimatedSprite" parent="."]
+position = Vector2( 1167, 438 )
+frames = SubResource( 1 )
+animation = "splash"
+playing = true
+
+[node name="Splash8" type="AnimatedSprite" parent="."]
+position = Vector2( 297, 312 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 4
+playing = true
+
+[node name="Splash9" type="AnimatedSprite" parent="."]
+position = Vector2( 91, 334 )
+frames = SubResource( 1 )
+animation = "splash"
+playing = true
+
+[node name="Splash10" type="AnimatedSprite" parent="."]
+position = Vector2( 638, 325 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 4
+playing = true
+
+[node name="Splash11" type="AnimatedSprite" parent="."]
+position = Vector2( 1213, 94 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 7
+playing = true
+
+[node name="Splash12" type="AnimatedSprite" parent="."]
+position = Vector2( 660, 74 )
+frames = SubResource( 1 )
+animation = "splash"
+playing = true
+
+[node name="Splash13" type="AnimatedSprite" parent="."]
+position = Vector2( 668, 514 )
+frames = SubResource( 1 )
+animation = "splash"
+playing = true
+
+[node name="Splash14" type="AnimatedSprite" parent="."]
+position = Vector2( 907, 649 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 6
+playing = true
+
+[node name="Splash15" type="AnimatedSprite" parent="."]
+position = Vector2( 1126, 592 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 5
+playing = true
+
+[node name="Splash16" type="AnimatedSprite" parent="."]
+position = Vector2( 324, 159 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 6
+playing = true
+
+[node name="Splash17" type="AnimatedSprite" parent="."]
+position = Vector2( 814, 200 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 2
+playing = true
+
+[node name="Splash18" type="AnimatedSprite" parent="."]
+position = Vector2( 43, 39 )
+frames = SubResource( 1 )
+animation = "splash"
+frame = 2
+playing = true
+
+[node name="Plywak" type="AnimatedSprite" parent="."]
+position = Vector2( 332, 374 )
+frames = SubResource( 2 )
+animation = "swimming"
+frame = 1
+playing = true
