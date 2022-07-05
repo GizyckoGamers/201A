@@ -1,0 +1,9 @@
+title: Giżycko racer
+
+basically a racing game
+
+taxi driver, must get to the bridge before it starts to open
+
+map idea: look at the streets on google maps for racing tracks
+
+
