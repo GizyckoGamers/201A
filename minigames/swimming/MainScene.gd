@@ -7,10 +7,10 @@ extends Node2D
 var power = 100
 
 const powerUpValue = 8
-const powerFallingSpeed = 30
+const powerFallingSpeed = 70
 
 var swimmerDirection = 1
-const swimmerSpeed = 200
+const swimmerSpeed = 300
 
 var drown = false
 
