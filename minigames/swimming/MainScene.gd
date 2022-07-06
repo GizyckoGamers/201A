@@ -27,6 +27,8 @@ func _process(delta):
 	
 	if power <= 0:
 		drown = true
+		$Plywak/PlywakSprite.animation = "drowning"
+		$Plywak/PlywakSprite
 	
 	if !drown:
 		$Plywak.position += Vector2(swimmerDirection * swimmerSpeed * delta, 0) 
