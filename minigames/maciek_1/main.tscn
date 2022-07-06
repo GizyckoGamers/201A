@@ -11,6 +11,7 @@ position = Vector2( 569, 36 )
 
 [node name="Player Car" parent="." instance=ExtResource( 2 )]
 position = Vector2( 414, 37 )
+mass = 100.0
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 3 )
