@@ -8,7 +8,6 @@ func _ready():
 func _physics_process(delta):
 	var motion = Vector2()
 	var tolook = position
-	print(tolook)
 	
 	if Input.is_action_pressed("up"):
 		motion.y -= 1
