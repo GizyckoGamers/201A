@@ -7,6 +7,9 @@ env:
 
 jobs:
   export-linux:
+    ### DISABLED FOR BC TAKES TIME ###
+    if: false
+
     runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:3.3.4
