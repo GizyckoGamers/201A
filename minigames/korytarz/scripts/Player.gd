@@ -27,7 +27,3 @@ func _physics_process(delta):
 	
 	motion.normalized()
 	motion = move_and_slide(motion * movespeed)
-	
-
-func _process(delta):
-	pass
