@@ -12,12 +12,16 @@ config_version=4
 
 config/name="201A"
 run/main_scene="res://MainMenu.tscn"
+boot_splash/image="res://res/ic_launcher/feature_graphic.png"
+boot_splash/bg_color=Color( 1, 1, 0, 1 )
 config/icon="res://icon.png"
 
 [display]
 
 window/size/width=1280
 window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [global]
 
