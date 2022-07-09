@@ -1,0 +1,7 @@
+Godot Engine v3.4.4.stable.arch_linux - https://godotengine.org
+OpenGL ES 3.0 Renderer: Mesa Intel(R) Iris(R) Plus Graphics (ICL GT2)
+OpenGL ES Batching: ON
+ 
+Project is missing: /home/ziraell/game/project.godot
+ERROR: Condition "default_certs != nullptr" is true.
+   at: load_default_certificates (modules/mbedtls/crypto_mbedtls.cpp:314) - Condition "default_certs != nullptr" is true.
