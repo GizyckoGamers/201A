@@ -13,6 +13,7 @@ var swimmerDirection = 1
 const swimmerSpeed = 300
 
 var drown = false
+var finished = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,11 +23,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	power = clamp(power, 0, 100)
-	power -= powerFallingSpeed * delta
+	if !finished:
+		power -= powerFallingSpeed * delta
 	$PowerProgressBar/PowerProgressBar.value = power
 	
 	if power <= 0:
 		drown = true
+		$Plywak/PlywakSprite.animation = "drowning"
+		$Plywak/PlywakSprite
 	
 	if !drown:
 		$Plywak.position += Vector2(swimmerDirection * swimmerSpeed * delta, 0) 
@@ -34,9 +38,8 @@ func _process(delta):
 
 
 func _on_WholeScreenButton_pressed():
-	power += powerUpValue
-	pass # Replace with function body.
-
+	if !finished:
+		power += powerUpValue
 
 
 func _on_PoolEnd_body_entered(body):
@@ -47,3 +50,10 @@ func _on_PoolEnd_body_entered(body):
 
 func _on_PoolStart_body_entered(body):
 	swimmerDirection = 0
+	finished = true
+	$Plywak/PlywakSprite.animation = "happy"
+	$BrawoText.visible = true
+
+
+func _on_BackButton_pressed():
+	get_tree().change_scene("res://MainMenu.tscn")

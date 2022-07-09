@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://minigames/swimming/water.png" type="Texture" id=1]
 [ext_resource path="res://minigames/swimming/pomost.png" type="Texture" id=2]
@@ -13,9 +13,58 @@
 [ext_resource path="res://minigames/swimming/MainScene.gd" type="Script" id=11]
 [ext_resource path="res://minigames/swimming/progressBarTheme.tres" type="Theme" id=12]
 [ext_resource path="res://minigames/swimming/ratownik.png" type="Texture" id=13]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_1.png" type="Texture" id=14]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_7.png" type="Texture" id=15]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_6.png" type="Texture" id=16]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_2.png" type="Texture" id=17]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_3.png" type="Texture" id=18]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_5.png" type="Texture" id=19]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_4.png" type="Texture" id=20]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_9.png" type="Texture" id=21]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_10.png" type="Texture" id=22]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_11.png" type="Texture" id=23]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_21.png" type="Texture" id=24]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_22.png" type="Texture" id=25]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_23.png" type="Texture" id=26]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_24.png" type="Texture" id=27]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_25.png" type="Texture" id=28]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_27.png" type="Texture" id=29]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_26.png" type="Texture" id=30]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_15.png" type="Texture" id=31]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_16.png" type="Texture" id=32]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_14.png" type="Texture" id=33]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_12.png" type="Texture" id=34]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_19.png" type="Texture" id=35]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_17.png" type="Texture" id=36]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_18.png" type="Texture" id=37]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_20.png" type="Texture" id=38]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_8.png" type="Texture" id=39]
+[ext_resource path="res://minigames/swimming/drowning_animation/plywak_przod_drowning_13.png" type="Texture" id=40]
+[ext_resource path="res://res/back_button.png" type="Texture" id=41]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_2.png" type="Texture" id=42]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_3.png" type="Texture" id=43]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_9.png" type="Texture" id=44]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_1.png" type="Texture" id=45]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_5.png" type="Texture" id=46]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_4.png" type="Texture" id=47]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_7.png" type="Texture" id=48]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_6.png" type="Texture" id=49]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_8.png" type="Texture" id=50]
+[ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_10.png" type="Texture" id=51]
+[ext_resource path="res://res/MenuTheme.tres" type="Theme" id=52]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 39 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 34 ), ExtResource( 40 ), ExtResource( 33 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 35 ), ExtResource( 38 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 29 ) ],
+"loop": false,
+"name": "drowning",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 45 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 47 ), ExtResource( 46 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "happy",
+"speed": 10.0
+}, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "swimming",
@@ -59,6 +108,7 @@ z_index = 1
 [node name="PlywakSprite" type="AnimatedSprite" parent="Plywak"]
 frames = SubResource( 2 )
 animation = "swimming"
+frame = 1
 playing = true
 
 [node name="PlywakCollision" type="CollisionShape2D" parent="Plywak"]
@@ -70,130 +120,132 @@ shape = SubResource( 3 )
 position = Vector2( 204, 673 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Splash1" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 527, 658 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 5
+frame = 6
 playing = true
 
 [node name="Splash2" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 523, 208 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 6
+frame = 7
 playing = true
 
 [node name="Splash3" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1107, 258 )
 frames = SubResource( 1 )
 animation = "splash"
+frame = 1
 playing = true
 
 [node name="Splash4" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 434, 486 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 7
 playing = true
 
 [node name="Splash5" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 179, 497 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 5
+frame = 6
 playing = true
 
 [node name="Splash6" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 923, 375 )
 frames = SubResource( 1 )
 animation = "splash"
+frame = 1
 playing = true
 
 [node name="Splash7" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1167, 438 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 3
+frame = 4
 playing = true
 
 [node name="Splash8" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 297, 312 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 6
+frame = 7
 playing = true
 
 [node name="Splash9" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 91, 334 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 2
+frame = 3
 playing = true
 
 [node name="Splash10" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 638, 325 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 6
+frame = 7
 playing = true
 
 [node name="Splash11" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1213, 94 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 2
+frame = 3
 playing = true
 
 [node name="Splash12" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 660, 74 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 3
+frame = 4
 playing = true
 
 [node name="Splash13" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 668, 514 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 3
+frame = 4
 playing = true
 
 [node name="Splash14" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 907, 649 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Splash15" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1126, 592 )
 frames = SubResource( 1 )
 animation = "splash"
+frame = 1
 playing = true
 
 [node name="Splash16" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 324, 159 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Splash17" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 814, 200 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 5
+frame = 6
 playing = true
 
 [node name="Splash18" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 43, 39 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 4
+frame = 5
 playing = true
 
 [node name="WholeScreenButton" type="Button" parent="."]
@@ -218,7 +270,7 @@ __meta__ = {
 }
 
 [node name="Ratownik" type="Sprite" parent="."]
-position = Vector2( 111, 252 )
+position = Vector2( 110, 300 )
 z_index = 16
 texture = ExtResource( 13 )
 
@@ -234,6 +286,31 @@ position = Vector2( 192, 360 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PoolStart"]
 shape = SubResource( 5 )
 
+[node name="BackButton" type="Node2D" parent="."]
+position = Vector2( 48, 48 )
+scale = Vector2( 2, 2 )
+z_index = 15
+
+[node name="BackButton" type="TextureButton" parent="BackButton"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 41 )
+
+[node name="BrawoText" type="Node2D" parent="."]
+visible = false
+position = Vector2( 450, 210 )
+z_index = 15
+
+[node name="BrawoText" type="RichTextLabel" parent="BrawoText"]
+anchor_right = 0.376
+margin_right = 300.0
+margin_bottom = 78.0
+rect_scale = Vector2( 4, 4 )
+theme = ExtResource( 52 )
+text = "Brawo!"
+fit_content_height = true
+
 [connection signal="pressed" from="WholeScreenButton" to="." method="_on_WholeScreenButton_pressed"]
 [connection signal="body_entered" from="PoolEnd" to="." method="_on_PoolEnd_body_entered"]
 [connection signal="body_entered" from="PoolStart" to="." method="_on_PoolStart_body_entered"]
+[connection signal="pressed" from="BackButton/BackButton" to="." method="_on_BackButton_pressed"]
