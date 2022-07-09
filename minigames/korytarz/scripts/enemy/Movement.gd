@@ -30,13 +30,12 @@ func _next_spot():
 
 func navigate():
 	if _path.size() > 0:
-		var motion = current_position.direction_to(_path[0])
-		var direction = _path[0] - current_position
+		var motion = current_position.direction_to(_path[0]).normalized()
 		
 		if _is_close(current_position, _path[0]):
 			_path.pop_front()
 
-		return [motion, direction]
+		return motion
 	
 	_next_spot()
-	return [Vector2.ZERO, Vector2.ZERO]
+	return Vector2.ZERO

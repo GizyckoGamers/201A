@@ -1,4 +1,4 @@
-const Constants = preload("../enemy/Constants.gd")
+const Constants = preload("Constants.gd")
 const Player = preload("../player/Player.gd")
 
 var _enemy = null
@@ -17,4 +17,4 @@ func check_see_player(motion):
 		var v1 = _enemy.global_position.direction_to(_player.global_position).normalized()
 		var v2 = _enemy.global_position.direction_to(motion).normalized()
 		
-		return abs(v1.dot(v2)) <= cos(Constants.view_angle)
+		return cos(Constants.view_angle/2) <= v1.dot(v2)

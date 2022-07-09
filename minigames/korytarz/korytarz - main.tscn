@@ -1,12 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://minigames/korytarz/scripts/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://minigames/korytarz/sprites/player.png" type="Texture" id=2]
 [ext_resource path="res://minigames/korytarz/sprites/tilesheet.png" type="Texture" id=4]
 [ext_resource path="res://minigames/korytarz/scripts/enemy/Enemy.gd" type="Script" id=5]
 [ext_resource path="res://minigames/korytarz/sprites/enemy.png" type="Texture" id=6]
-
-[sub_resource type="GDScript" id=18]
 
 [sub_resource type="ConcavePolygonShape2D" id=9]
 segments = PoolVector2Array( 0, 0, 40, 0, 40, 0, 40, 40, 40, 40, 0, 40, 0, 40, 0, 0 )
@@ -126,7 +124,6 @@ radius = 21.0
 radius = 20.0
 
 [node name="World" type="Node2D"]
-script = SubResource( 18 )
 
 [node name="LevelNavigation" type="Navigation2D" parent="."]
 
@@ -169,7 +166,3 @@ texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource( 3 )
-
-[node name="RayCast" type="RayCast2D" parent="Enemy"]
-enabled = true
-cast_to = Vector2( 2000, 0 )
