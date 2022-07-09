@@ -23,8 +23,6 @@ func _next_spot():
 	if !_spots.empty():
 
 		if _is_close(current_position, _spots[0].position):
-			print("Reached")
-			print(_spots[0].position)
 			_spots.pop_front()
 			
 			if (!_spots.empty()): # else -> done

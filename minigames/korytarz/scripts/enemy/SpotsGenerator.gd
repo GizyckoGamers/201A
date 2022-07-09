@@ -153,18 +153,9 @@ func get_spots_path(starting_position):
 	var spots = _generate_spots()
 	
 	var sorted_spots = _find_path(starting_position, spots)
-	print("ORIGIN")
-	for spot in sorted_spots:
-		print(spot.position)
-	print("========")
 
 	var path = _add_intermediate_spots(starting_position, sorted_spots)
 
 	var full_path =  _add_start_and_end_doors(path)
-	
-	print("MODIFIED")
-	for spot in full_path:
-		print(spot.position)
-	print("========")
 	
 	return full_path
