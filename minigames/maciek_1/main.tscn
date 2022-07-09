@@ -7,14 +7,13 @@
 
 [node name="Ground" parent="." instance=ExtResource( 1 )]
 position = Vector2( 569, 36 )
-grip = 1.0
+grip = 2.0
 
 [node name="Player Car" parent="." instance=ExtResource( 2 )]
-position = Vector2( 572, 129 )
+position = Vector2( 566, 126 )
 linear_damp = 0.0
-angular_damp = 0.0
-tire_grip = 1.0
-turn_feel_num = 1.0
-max_steering_angle = 50.0
+engine_power = 100.0
+break_power = 100.0
+max_steering_angle = 100.0
 
 [connection signal="ground_value_update" from="Ground" to="Player Car" method="_on_some_ground_value_update"]

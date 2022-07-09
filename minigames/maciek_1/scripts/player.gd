@@ -5,9 +5,10 @@ export var break_power: float
 
 export var tire_grip: float
 export var turn_feel_num: float
-export var wheels_forward_friction: float
+export var wheel_feel_num: float
+#export var wheels_forward_friction: float
 
-onready var fuck_off: Node2D= get_node("piss_test")
+onready var fuck_off: Node2D = get_node("piss_test")
 
 var fr_grip: float = 1
 var fl_grip: float = 1
@@ -28,23 +29,52 @@ export var max_steering_angle: float
 
 
 func _ready():
-#	apply_impulse(Vector2.ZERO, Vector2.UP * 20)
-#	print("back_wheel_displacement = ", back_wheel_displacement)
-#	print("front_wheel_displacement = ", front_wheel_displacement)
-#	print("wheel_axis_displacement = ", wheel_axis_displacement)
-	return
+	pass
+#	apply_central_impulse(Vector2.UP * 100)
 
+func calculate_wheel_physics_forces(total_turn_angle: float) -> Vector2:
+	var rot := rot_to_vec2(global_rotation)
+	return rot
+	var move_angle: float = get_linear_velocity().angle_to(rot)
+	var clamped_angle := clamp(move_angle, -PI / 2, PI / 2)
+	var common_mull := tire_grip * wheel_feel_num
+	print("move_angle = ", move_angle)
+	
+	# handle rear tires
+	var rr_force := rr_grip * common_mull * clamped_angle
+	var rl_force := rl_grip * common_mull * clamped_angle
+	# handle front tires
+	var fr_force := fr_grip * common_mull * clamp(move_angle - total_turn_angle, -PI / 2, PI / 2)
+	var fl_force := fl_grip * common_mull * clamp(move_angle - total_turn_angle, -PI / 2, PI / 2)
+	return -rot_to_vec2(rotation) * rr_force * rl_force * fr_force * fl_force
+	
 
+func move_once_more(delta: float, state: Physics2DDirectBodyState):
+	var throttle := Input.get_action_strength("up")
+	var breaks := Input.get_action_strength("down")
+	var turn_angle := (Input.get_action_strength("right") - Input.get_action_strength("left")) * max_steering_angle
+	state.apply_torque_impulse(turn_angle * delta)
+	
+	var total_torque: float = 0
+	var total_force := Vector2.ZERO
+	
+	var rr_pow := throttle * (tire_grip * rr_grip) * engine_power
+	var rl_pow := throttle * (tire_grip * rl_grip) * engine_power
+	
+	var all_wheel_non_user_forces := calculate_wheel_physics_forces(turn_angle)
+	
+	print("linear_velocity = ", linear_velocity)
+	print("global_rotation = ", global_rotation)
+	print("vec(global_rotation) = ", rot_to_vec2(global_rotation))
+	print("all_wheel_non_user_forces = ", all_wheel_non_user_forces)
+	print("\n")
+	
+	state.add_central_force(rot_to_vec2(rotation) * (throttle - breaks) * 10)
+#	state.add_central_force((throttle - breaks) * Vector2.UP * 10)
 
-#func smartly_clamp_rotation(rot: float) -> float:
-#	if rot >= -2 * PI and rot <= 2 * PI:
-#		return rot
-#
-#
-#	return 0.0
 
 var i := 0
-func move_again(delta: float):
+func move_again(delta: float, state: Physics2DDirectBodyState):
 	var throttle := Input.get_action_strength("up")
 	var breaks := Input.get_action_strength("down")
 	var turn_angle := (Input.get_action_strength("right") - Input.get_action_strength("left")) * max_steering_angle
@@ -52,23 +82,32 @@ func move_again(delta: float):
 	var rr_pow := throttle * (tire_grip * rr_grip) * engine_power
 	var rl_pow := throttle * (tire_grip * rl_grip) * engine_power
 	
-	var direction := Vector2(cos(transform.get_rotation()), sin(transform.get_rotation())).normalized()
-	fuck_off.rotation = rotation
+	var direction := rot_to_vec2(rotation)
+	
 	if i<50: i+=1;
 	else:
 		i = 0
-		print(turn_angle)
+#		print(angular_velocity)
+#		print(linear_velocity)
+#		print("\n")
+#		print("turn_angle = ", turn_angle)
+#		print("manual = ", Vector2(cos(rotation), sin(rotation)).normalized())
+#		print("built-in = ", Vector2.UP.rotated(rotation).normalized())
+#		print("\n")
 #		print("direction = ", direction)
 	
-	apply_torque_impulse(turn_angle * delta)
-	var up := Vector2.UP * (throttle - breaks) * engine_power
-	apply_central_impulse(up * rotation_to_vec2(rotation))
-	
-#	apply_impulse(rr_wheel.position, direction * rr_pow)
-#	apply_impulse(rl_wheel.position, direction * rl_pow)
+	state.apply_torque_impulse(turn_angle * delta)
+#	state.apply_central_impulse((Vector2.UP * (throttle - breaks) * delta))
+#	state.apply_central_impulse((Vect.rotated(rotation) * 1 * rr_pow).rotated(rotation), Vector2.UP * 100)
+	state.add_force(rr_wheel.global_position, direction * rr_pow * delta)
+	state.add_force(rl_wheel.global_position, direction * rl_pow * delta)
+#	state.apply_impulse(rl_wheel.position, direction * rl_pow * delta)
 
-func rotation_to_vec2(rot: float) -> Vector2:
-	return Vector2(cos(rot), sin(rot))
+# WHY ON OUR BEAUTIFUL BUT DYING EARTH WOULD SOMEONE NOT WRITE THAT THE ROTATION IS TO THE POSITIVE X-AXIS
+# I'VE WASTED SO MUCH TIME DEBUGING ALL OF THIS
+# ALSO WHY IS THE Y-AXIS INVERSED????? WHO HURT THE CONTRIBUTORS???
+func rot_to_vec2(rot: float) -> Vector2:
+	return Vector2(sin(rot), -cos(rot))
 
 func move(delta: float):
 #	var world_rot := global_position.angle_to(Vector2.RIGHT)
@@ -80,8 +119,8 @@ func move(delta: float):
 	var rr_pow := throttle * (tire_grip * rr_grip) * engine_power
 	var rl_pow := throttle * (tire_grip * rl_grip) * engine_power
 	
-	var fr_friction := (Vector2(-wheels_forward_friction, turn_angle * turn_feel_num) * fr_grip * tire_grip).rotated(-turn_angle)
-	var fl_friction := (Vector2(-wheels_forward_friction, turn_angle * turn_feel_num) * fl_grip * tire_grip).rotated(-turn_angle)
+#	var fr_friction := (Vector2(-wheels_forward_friction, turn_angle * turn_feel_num) * fr_grip * tire_grip).rotated(-turn_angle)
+#	var fl_friction := (Vector2(-wheels_forward_friction, turn_angle * turn_feel_num) * fl_grip * tire_grip).rotated(-turn_angle)
 
 #	var p1 := Vector2(cos(world_rot), sin(world_rot)).normalized() * rr_pow
 	var p1 := Vector2.UP * rr_pow
@@ -95,25 +134,20 @@ func move(delta: float):
 	apply_impulse(pos1, p1)
 	apply_impulse(pos2, p2)
 	
-func _integrate_forces(state: Physics2DDirectBodyState) -> void:
-	move_again(state.step)
+
+func _integrate_forces(state: Physics2DDirectBodyState):
+	applied_force = Vector2.ZERO
+	applied_torque = 0
+	
+	move_once_more(state.step, state)
+#	move_again(state.step, state)
+
 
 func _physics_process(delta: float):
-#	move_again(delta)
-#	move(delta)
 	return;
 	var turn: float = (Input.get_action_strength("right") - Input.get_action_strength("left")) * max_steering_angle
 	
 	apply_torque_impulse(turn * delta * 1000)
-	
-#	if i < 15: i += 1;
-#	else:
-#		break
-#		i = 0
-#		print(angular_velocity)
-#		print(position)
-#		print(linear_velocity)
-#		print("################\n")
 	
 	var engine := Input.get_action_strength("up") * engine_power
 	var breaks := Input.get_action_strength("down") * break_power
@@ -123,21 +157,6 @@ func _physics_process(delta: float):
 	var force := Vector2(cos(rotation), sin(rotation))
 	force *= engine - breaks
 	apply_central_impulse(force * delta)
-	
-
-#func _on_some_ground_grip_update(wheel: Node2D, new_grip: float):
-#	if wheel == fr_wheel:
-#		print("fr")
-#		fr_grip = new_grip
-#	elif wheel == fl_wheel:
-#		print("fl")
-#		fl_grip = new_grip
-#	elif wheel == rr_wheel:
-#		print("br")
-#		rr_grip = new_grip
-#	elif wheel == rl_wheel:
-#		print("bl")
-#		rl_grip = new_grip
 
 
 func _on_some_ground_value_update(body, new_grip) -> void:
