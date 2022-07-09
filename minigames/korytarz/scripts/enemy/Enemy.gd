@@ -27,8 +27,8 @@ func _physics_process(delta):
 		var angle = transform.x.angle_to(direction)
 		rotate(sign(angle) * min(delta * Constants.rotationspeed, abs(angle)))
 		
+		if stepify(angle, 1e-5) != 0:
+			return
+		
 	motion.normalized()
 	motion = move_and_slide(motion * Constants.movespeed)
-	
-	# rotate
-	# bool: needs to rotate

@@ -1,17 +1,9 @@
 const Constants = preload("Constants.gd")
+const Spot = preload("Spot.gd")
 
 ### GENERATE SPOTS
 func _generate_spot():
-	if rand_range(0, 100) < Constants.balcony_chance:  # room or balcony
-		var id: int = rand_range(0, Constants.rooms_amount/2)
-		var spot = Constants.balcony_spots[rand_range(0, Constants.balcony_spots.size())]
-		
-		return Vector2(spot.x + 560*id, spot.y)
-	else:
-		var id: int = rand_range(0, Constants.rooms_amount)
-		var spot = Constants.room_spots[rand_range(0, Constants.room_spots.size())]
-		
-		return Vector2(spot.x + 280*id, spot.y)
+	return Spot.new()
 
 func _generate_spots():
 	var spots = []
@@ -33,8 +25,9 @@ func _find_path(starting_position, to_visit):
 	for i in range(to_visit.size()):
 		is_visited.append(false)
 		
-	var current = starting_position
-
+	var current = Spot.new()
+	current.position = starting_position
+	
 	var min_dist
 	var min_index
 	var dist 
@@ -45,7 +38,7 @@ func _find_path(starting_position, to_visit):
 			if is_visited[index]:
 				continue
 			
-			dist = _get_distance(current, to_visit[index])
+			dist = _get_distance(current.position, to_visit[index].position)
 			if dist < min_dist:
 				min_dist = dist 
 				min_index = index
@@ -54,13 +47,124 @@ func _find_path(starting_position, to_visit):
 		is_visited[min_index] = true
 		path.append(to_visit[min_index])
 	
-
 	return path
 
+func _create_custom_spot(coordinates, room_id, is_balcony):
+	var spot = Spot.new()
+
+	if is_balcony:
+		spot.position = Vector2(coordinates.x + 280*(room_id/2)*2, coordinates.y)
+	else:
+		spot.position = Vector2(coordinates.x + 280*room_id, coordinates.y)
+	spot.room_id = room_id
+	spot.is_balcony = is_balcony
+	
+	return spot
+
+func _create_door_spot(is_balcony, room_id, is_left, is_leave):
+	var spots = []
+	
+	if is_balcony:
+		if is_left:
+			spots.append(_create_custom_spot(Constants.balcony_left_door[0], room_id, is_balcony))
+			spots.append(_create_custom_spot(Constants.balcony_left_door[1], room_id, is_balcony))
+		else:
+			spots.append(_create_custom_spot(Constants.balcony_right_door[0], room_id, is_balcony))
+			spots.append(_create_custom_spot(Constants.balcony_right_door[1], room_id, is_balcony))
+	else:
+		spots.append(_create_custom_spot(Constants.room_door[0], room_id, is_balcony))
+		spots.append(_create_custom_spot(Constants.room_door[1], room_id, is_balcony))
+	
+	if is_leave:
+		spots.invert()
+		
+	return spots
+
+func _check_left(spot):
+	if spot.room_id % 2 == 0:
+		return true
+	else:
+		return false
+
+func _get_all_door_spots(prev_spot, spot):
+	var to_add = []
+	
+	if prev_spot.room_id == -1:
+		to_add += _create_door_spot(false, spot.room_id, false, false)
+		if spot.is_balcony:
+			to_add += _create_door_spot(true, spot.room_id, _check_left(spot), false)
+	
+	elif spot.room_id == -1:
+		print(prev_spot.room_id)
+		to_add += _create_door_spot(false, prev_spot.room_id, false, true)
+	
+	# TODO: AI by going through balcony
+	
+	
+	elif prev_spot.room_id != spot.room_id:
+		
+		# leave
+		if prev_spot.is_balcony:
+			to_add += _create_door_spot(true, prev_spot.room_id, _check_left(prev_spot), true)
+		to_add += _create_door_spot(false, prev_spot.room_id, false, true)
+		
+		# enter
+		to_add += _create_door_spot(false, spot.room_id, false, false)
+		if spot.is_balcony:
+			to_add += _create_door_spot(true, spot.room_id, _check_left(spot), false)
+	
+	elif prev_spot.is_balcony != spot.is_balcony:
+		if spot.is_balcony:
+			to_add += _create_door_spot(true, spot.room_id, _check_left(spot), true)
+		else:
+			to_add += _create_door_spot(true, spot.room_id, _check_left(spot), false)
+	
+	return to_add
+
+func _add_start_and_end_doors(spots):
+	return [
+		_create_custom_spot(Constants.start_door[0], 0, false), 
+		_create_custom_spot(Constants.start_door[1], 0, false)
+	] + spots + [
+		_create_custom_spot(Constants.end_door[0], 0, false),
+		_create_custom_spot(Constants.end_door[1], 0, false)
+	]
+
+func _add_intermediate_spots(starting_position, spots):
+	var all_spots = []
+	
+	var prev_spot = Spot.new()
+	prev_spot.room_id = -1
+	prev_spot.position = starting_position
+	
+	for spot in spots:
+		all_spots += _get_all_door_spots(prev_spot, spot)
+		
+		all_spots.append(spot)
+		prev_spot = spot
+		
+
+	all_spots += _create_door_spot(false, spots[-1].room_id, false, true)
+		
+	return all_spots
 
 ### RETURN RESULT
 func get_spots_path(starting_position):
 	var spots = _generate_spots()
-	var path = _find_path(starting_position, spots)
 	
-	return path
+	var sorted_spots = _find_path(starting_position, spots)
+	print("ORIGIN")
+	for spot in sorted_spots:
+		print(spot.position)
+	print("========")
+
+	var path = _add_intermediate_spots(starting_position, sorted_spots)
+
+	var full_path =  _add_start_and_end_doors(path)
+	
+	print("MODIFIED")
+	for spot in full_path:
+		print(spot.position)
+	print("========")
+	
+	return full_path
