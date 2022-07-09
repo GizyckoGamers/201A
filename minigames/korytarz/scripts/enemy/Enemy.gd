@@ -22,12 +22,10 @@ func _ready():
 	vision = Vision.new(self, player)
 
 func _physics_process(delta):
-	var direction = Vector2()
-	
 	if movement:
 		movement.current_position = global_position
 		
-		direction = movement.navigate()
+		var direction = movement.navigate()
 		
 		var angle = transform.x.angle_to(direction)
 		rotate(sign(angle) * min(delta * Constants.rotationspeed, abs(angle)))
@@ -35,7 +33,5 @@ func _physics_process(delta):
 		if vision.check_see_player(direction):
 			print("Player is in view of an enemy " + self.to_string())
 
-		if stepify(angle, 1e-5) != 0:
-			return
-
-	move_and_slide(direction * Constants.movespeed)
+		if is_zero_approx(angle):
+			move_and_slide(direction * Constants.movespeed)

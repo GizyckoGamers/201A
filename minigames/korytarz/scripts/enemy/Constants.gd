@@ -1,5 +1,3 @@
-extends Node
-
 const rooms_amount = 8
 
 const movespeed = 200

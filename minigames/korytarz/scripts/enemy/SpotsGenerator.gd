@@ -56,6 +56,7 @@ func _create_custom_spot(coordinates, room_id, is_balcony):
 		spot.position = Vector2(coordinates.x + 280*(room_id/2)*2, coordinates.y)
 	else:
 		spot.position = Vector2(coordinates.x + 280*room_id, coordinates.y)
+		
 	spot.room_id = room_id
 	spot.is_balcony = is_balcony
 	
@@ -94,7 +95,7 @@ func _get_all_door_spots(prev_spot, spot):
 		if spot.is_balcony:
 			to_add += _create_door_spot(true, spot.room_id, _check_left(spot), false)
 	
-	# TODO: AI by going through balcony
+	# TODO: AI path optimization by going through balcony
 	
 	
 	elif prev_spot.room_id != spot.room_id:
