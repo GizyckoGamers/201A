@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	if OS.get_name() == "HTML5":
+		OS.set_window_fullscreen(true) 
 
 func _on_ButtonPlywanie_pressed():
 	get_tree().change_scene("res://minigames/swimming/MainScene.tscn")

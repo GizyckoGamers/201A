@@ -10,14 +10,24 @@ config_version=4
 
 [application]
 
+<<<<<<< HEAD
 config/name="game"
 run/main_scene="res://minigames/korytarz/korytarz - main.tscn"
 config/icon="res://icon.png"
+=======
+config/name="201A"
+run/main_scene="res://MainMenu.tscn"
+boot_splash/image="res://res/main_icons/feature_graphic.png"
+boot_splash/bg_color=Color( 0.984314, 0.921569, 0.247059, 1 )
+config/icon="res://res/main_icons/icon_512.png"
+>>>>>>> 1c196e5f451e16dd645f209d7580102742893633
 
 [display]
 
 window/size/width=1280
 window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [global]
 
