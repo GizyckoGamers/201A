@@ -94,10 +94,6 @@ func _get_all_door_spots(prev_spot, spot):
 		if spot.is_balcony:
 			to_add += _create_door_spot(true, spot.room_id, _check_left(spot), false)
 	
-	elif spot.room_id == -1:
-		print(prev_spot.room_id)
-		to_add += _create_door_spot(false, prev_spot.room_id, false, true)
-	
 	# TODO: AI by going through balcony
 	
 	
@@ -115,9 +111,9 @@ func _get_all_door_spots(prev_spot, spot):
 	
 	elif prev_spot.is_balcony != spot.is_balcony:
 		if spot.is_balcony:
-			to_add += _create_door_spot(true, spot.room_id, _check_left(spot), true)
-		else:
 			to_add += _create_door_spot(true, spot.room_id, _check_left(spot), false)
+		else:
+			to_add += _create_door_spot(true, spot.room_id, _check_left(spot), true)
 	
 	return to_add
 
