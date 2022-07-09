@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ic_launcher_adaptive_fore.png-e9869e10f8f5aa30a6139b1497bd3930.stex"
+path="res://.import/icon_180.png-ace4b6e50282dfd8855fa3afb2151409.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://res/ic_launcher/ic_launcher_adaptive_fore.png"
-dest_files=[ "res://.import/ic_launcher_adaptive_fore.png-e9869e10f8f5aa30a6139b1497bd3930.stex" ]
+source_file="res://res/main_icons/icon_180.png"
+dest_files=[ "res://.import/icon_180.png-ace4b6e50282dfd8855fa3afb2151409.stex" ]
 
 [params]
 
