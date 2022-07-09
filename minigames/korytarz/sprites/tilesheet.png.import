@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wall.png-3c004c650627c7112c2c520db1ec4cc3.stex"
+path="res://.import/tilesheet.png-08b8d43c30403dd986db1da82e056f63.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/korytarz/sprites/wall.png"
-dest_files=[ "res://.import/wall.png-3c004c650627c7112c2c520db1ec4cc3.stex" ]
+source_file="res://minigames/korytarz/sprites/tilesheet.png"
+dest_files=[ "res://.import/tilesheet.png-08b8d43c30403dd986db1da82e056f63.stex" ]
 
 [params]
 
