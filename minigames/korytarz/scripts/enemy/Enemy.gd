@@ -8,7 +8,6 @@ const Vision = preload("Vision.gd")
 var movement = null
 var vision = null
 
-
 func _ready():
 	var initial_position = global_position
 
@@ -20,20 +19,11 @@ func _ready():
 	var player = get_node("../Player")
 	
 	movement = Movement.new(level_navigation, initial_position, spots)
-	
-	vision = Vision.new()
-	vision.generate_raycast(self, player)
-
+	vision = Vision.new(self, player)
 
 func _physics_process(delta):
 	var motion = Vector2()
 	var direction = Vector2()
-	
-	
-	# check if player is found
-	if vision.check_player_found(self):
-		print("you lost")
-	
 	
 	if movement:
 		movement.current_position = global_position
@@ -44,6 +34,9 @@ func _physics_process(delta):
 		var angle = transform.x.angle_to(direction)
 		rotate(sign(angle) * min(delta * Constants.rotationspeed, abs(angle)))
 		
+		if vision.check_see_player(motion):
+			print("Player is in view of an enemy " + self.to_string())
+
 		if stepify(angle, 1e-5) != 0:
 			return
 		

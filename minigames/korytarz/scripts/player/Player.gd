@@ -3,7 +3,7 @@ extends KinematicBody2D
 const Constants = preload("Constants.gd")
 
 func _ready():
-	pass 
+	pass
 
 func _physics_process(delta):
 	var motion = Vector2()

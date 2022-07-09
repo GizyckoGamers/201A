@@ -10,8 +10,8 @@ config_version=4
 
 [application]
 
-config/name="201A"
-run/main_scene="res://MainMenu.tscn"
+config/name="game"
+run/main_scene="res://minigames/korytarz/korytarz - main.tscn"
 config/icon="res://icon.png"
 
 [display]

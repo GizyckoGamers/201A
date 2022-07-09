@@ -6,6 +6,7 @@ const movespeed = 200
 const rotationspeed = 2
 const spot_amount = 14
 const balcony_chance = 10  # %  - (out of 100) 
+const view_angle = PI/6
 
 const start_door = [
 	Vector2(-120, 680), # before entrance
