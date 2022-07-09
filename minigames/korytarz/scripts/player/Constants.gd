@@ -1,0 +1,1 @@
+const movespeed = 400

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var movespeed = 400
+const Constants = preload("Constants.gd")
 
 func _ready():
 	pass 
@@ -26,4 +26,4 @@ func _physics_process(delta):
 	look_at(tolook)
 	
 	motion.normalized()
-	motion = move_and_slide(motion * movespeed)
+	motion = move_and_slide(motion * Constants.movespeed)
