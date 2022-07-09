@@ -11,6 +11,8 @@ func _ready():
 
 	var spots = SpotsGenerator.new().get_spots_path(initial_position)
 	
+	# TODO: 
+	
 	var level_navigation = get_node("../LevelNavigation")
 	
 	movement = Movement.new(level_navigation, initial_position, spots)
