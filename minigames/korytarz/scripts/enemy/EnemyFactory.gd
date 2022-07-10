@@ -1,16 +1,17 @@
-extends Node
+const Constants = preload("Constants.gd")
+const Enemy = preload("Enemy.gd")
 
+var _enemies = []
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+func _init():
+	for i in range(Constants.enemy_amount):
+		_generate_enemy()
+		
+func _generate_enemy():
+	var left_start = false
+	if rand_range(0, 2) as int == 1:
+		left_start = true
+	_enemies.append(Enemy.new(left_start))
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func get_enemies():
+	return _enemies
