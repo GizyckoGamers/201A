@@ -17,7 +17,8 @@ var finished = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Plywak/SwimmingAudio.play()
+	$LakeAudio.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,10 +28,11 @@ func _process(delta):
 		power -= powerFallingSpeed * delta
 	$PowerProgressBar/PowerProgressBar.value = power
 	
-	if power <= 0:
+	if power <= 0 and !drown:
 		drown = true
+		$Plywak/SwimmingAudio.stop()
 		$Plywak/PlywakSprite.animation = "drowning"
-		$Plywak/PlywakSprite
+		$Plywak/DrowningAudio.play()
 	
 	if !drown:
 		$Plywak.position += Vector2(swimmerDirection * swimmerSpeed * delta, 0) 
@@ -51,6 +53,7 @@ func _on_PoolEnd_body_entered(body):
 func _on_PoolStart_body_entered(body):
 	swimmerDirection = 0
 	finished = true
+	$Plywak/SwimmingAudio.stop()
 	$Plywak/PlywakSprite.animation = "happy"
 	$BrawoText.visible = true
 

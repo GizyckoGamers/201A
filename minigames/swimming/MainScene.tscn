@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://minigames/swimming/water.png" type="Texture" id=1]
 [ext_resource path="res://minigames/swimming/pomost.png" type="Texture" id=2]
@@ -52,6 +52,9 @@
 [ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_8.png" type="Texture" id=50]
 [ext_resource path="res://minigames/swimming/plywak_przod_happy/plywak_przod_happy_10.png" type="Texture" id=51]
 [ext_resource path="res://res/MenuTheme.tres" type="Theme" id=52]
+[ext_resource path="res://minigames/swimming/drowning.mp3" type="AudioStream" id=53]
+[ext_resource path="res://minigames/swimming/swimming.mp3" type="AudioStream" id=54]
+[ext_resource path="res://minigames/swimming/lake.mp3" type="AudioStream" id=55]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -60,15 +63,15 @@ animations = [ {
 "name": "drowning",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 45 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 47 ), ExtResource( 46 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 51 ) ],
-"loop": true,
-"name": "happy",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "swimming",
 "speed": 2.0
+}, {
+"frames": [ ExtResource( 45 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 47 ), ExtResource( 46 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 44 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "happy",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -114,138 +117,142 @@ playing = true
 [node name="PlywakCollision" type="CollisionShape2D" parent="Plywak"]
 shape = SubResource( 3 )
 
+[node name="DrowningAudio" type="AudioStreamPlayer2D" parent="Plywak"]
+stream = ExtResource( 53 )
+
+[node name="SwimmingAudio" type="AudioStreamPlayer2D" parent="Plywak"]
+stream = ExtResource( 54 )
+
 [node name="Splashes" type="Node2D" parent="."]
 
 [node name="Splash0" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 204, 673 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Splash1" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 527, 658 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 6
+frame = 5
 playing = true
 
 [node name="Splash2" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 523, 208 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 7
+frame = 6
 playing = true
 
 [node name="Splash3" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1107, 258 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 1
 playing = true
 
 [node name="Splash4" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 434, 486 )
 frames = SubResource( 1 )
 animation = "splash"
+frame = 7
 playing = true
 
 [node name="Splash5" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 179, 497 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 6
+frame = 5
 playing = true
 
 [node name="Splash6" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 923, 375 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 1
 playing = true
 
 [node name="Splash7" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1167, 438 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 4
+frame = 3
 playing = true
 
 [node name="Splash8" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 297, 312 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 7
+frame = 6
 playing = true
 
 [node name="Splash9" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 91, 334 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Splash10" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 638, 325 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 7
+frame = 6
 playing = true
 
 [node name="Splash11" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1213, 94 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Splash12" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 660, 74 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 4
+frame = 3
 playing = true
 
 [node name="Splash13" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 668, 514 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 4
+frame = 3
 playing = true
 
 [node name="Splash14" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 907, 649 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Splash15" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1126, 592 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 1
 playing = true
 
 [node name="Splash16" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 324, 159 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Splash17" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 814, 200 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 6
+frame = 5
 playing = true
 
 [node name="Splash18" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 43, 39 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 5
+frame = 4
 playing = true
 
 [node name="WholeScreenButton" type="Button" parent="."]
@@ -309,6 +316,9 @@ rect_scale = Vector2( 4, 4 )
 theme = ExtResource( 52 )
 text = "Brawo!"
 fit_content_height = true
+
+[node name="LakeAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 55 )
 
 [connection signal="pressed" from="WholeScreenButton" to="." method="_on_WholeScreenButton_pressed"]
 [connection signal="body_entered" from="PoolEnd" to="." method="_on_PoolEnd_body_entered"]

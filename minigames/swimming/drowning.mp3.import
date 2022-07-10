@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/drowning.mp3-44f3a7f380544bbceea5f31c0a5a5904.mp3str"
+
+[deps]
+
+source_file="res://minigames/swimming/drowning.mp3"
+dest_files=[ "res://.import/drowning.mp3-44f3a7f380544bbceea5f31c0a5a5904.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
