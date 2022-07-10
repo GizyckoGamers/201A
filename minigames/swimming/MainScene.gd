@@ -27,10 +27,10 @@ func _process(delta):
 		power -= powerFallingSpeed * delta
 	$PowerProgressBar/PowerProgressBar.value = power
 	
-	if power <= 0:
+	if power <= 0 and !drown:
 		drown = true
 		$Plywak/PlywakSprite.animation = "drowning"
-		$Plywak/PlywakSprite
+		$Plywak/DrowningAudio.play()
 	
 	if !drown:
 		$Plywak.position += Vector2(swimmerDirection * swimmerSpeed * delta, 0) 
