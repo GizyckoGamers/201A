@@ -18,6 +18,7 @@ var finished = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Plywak/SwimmingAudio.play()
+	$LakeAudio.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,7 +56,6 @@ func _on_PoolStart_body_entered(body):
 	$Plywak/SwimmingAudio.stop()
 	$Plywak/PlywakSprite.animation = "happy"
 	$BrawoText.visible = true
-	$LakeAudio.play()
 
 
 func _on_BackButton_pressed():
