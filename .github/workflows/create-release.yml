@@ -83,12 +83,13 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/windoza/201a_windoza.x86_64.exe
           tag: ${{ steps.latest-tag.outputs.release }}
-      - name: Upload Android
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/android/201a_android.apk
-          tag: ${{ steps.latest-tag.outputs.release }}
+##### Again - not today :( #####
+##      - name: Upload Android
+##        uses: svenstaro/upload-release-action@v2
+##        with:
+##          repo_token: ${{ secrets.GITHUB_TOKEN }}
+##          file: build/android/201a_android.apk
+##          tag: ${{ steps.latest-tag.outputs.release }}
       - name: Upload Web
         uses: svenstaro/upload-release-action@v2
         with:
