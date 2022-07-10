@@ -34,6 +34,8 @@ jobs:
       - name: Android Build
         run: |
           mkdir -v -p build/android
+          mkdir -v secrets
+          echo ${{ secrets.ANDROID_KEYSTORE_BASE64 }} | base64 --decode > secrets/debug.keystore
           godot -v --export "Android" build/android/201a_android.apk
       - name: Web Build
         run: |
