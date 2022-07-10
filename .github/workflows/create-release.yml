@@ -46,7 +46,7 @@ jobs:
       - name: Android Build
         run: |
           # Replace line for android sdk with our special script
-          python replace.py ~/.config/godot/editor_settings-3.tres "export/android/android_sdk_path" "export/android/android_sdk_path = \"~/Android/Sdk\" ~/.config/godot/editor_settings-3.tres
+          python replace_line.py ~/.config/godot/editor_settings-3.tres "export/android/android_sdk_path" "export/android/android_sdk_path = \"~/Android/Sdk\" ~/.config/godot/editor_settings-3.tres
           mkdir -v -p build/android
           mkdir -v secrets
           echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > secrets/debug.keystore
