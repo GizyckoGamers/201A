@@ -7,6 +7,7 @@ const Vision = preload("Vision.gd")
 
 var movement = null
 var vision = null
+var direction = null
 
 func _ready():
 	var initial_position = global_position
@@ -25,13 +26,18 @@ func _physics_process(delta):
 	if movement:
 		movement.current_position = global_position
 		
-		var direction = movement.navigate()
+		direction = movement.navigate()
 		
 		var angle = transform.x.angle_to(direction)
 		rotate(sign(angle) * min(delta * Constants.rotationspeed, abs(angle)))
 		
-		if vision.check_see_player(direction):
-			print("Player is in view of an enemy " + self.to_string())
-
+		update()
+		if vision.check_see_player():
+			pass
+		
 		if is_zero_approx(angle):
 			move_and_slide(direction * Constants.movespeed)
+
+func _draw():
+	if vision and direction:
+		vision.update_vision_lines()

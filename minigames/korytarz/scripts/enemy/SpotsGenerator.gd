@@ -153,6 +153,6 @@ func get_spots_path(starting_position):
 
 	var path = _add_intermediate_spots(starting_position, sorted_spots)
 
-	var full_path =  _add_start_and_end_doors(path)
+	var full_path = _add_start_and_end_doors(path)
 	
 	return full_path
