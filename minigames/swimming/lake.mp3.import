@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/lake.mp3-e62799c4ff05fc1523ce7a627ad55f03.mp3str"
+
+[deps]
+
+source_file="res://minigames/swimming/lake.mp3"
+dest_files=[ "res://.import/lake.mp3-e62799c4ff05fc1523ce7a627ad55f03.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
