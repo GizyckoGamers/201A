@@ -45,7 +45,7 @@ jobs:
           mkdir -v -p build/mac
           godot -v --export "Mac OSX" build/mac/201a_mac.zip
       - name: Get Latest Release
-        uses: pozetroninc/github-action-get-latest-release@v0.6
+        uses: pozetroninc/github-action-get-latest-release@v0.5
         with:
           repository: ${{ github.repository }}
         id: latest-tag
