@@ -129,130 +129,130 @@ stream = ExtResource( 54 )
 position = Vector2( 204, 673 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Splash1" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 527, 658 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 5
+frame = 7
 playing = true
 
 [node name="Splash2" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 523, 208 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 6
 playing = true
 
 [node name="Splash3" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1107, 258 )
 frames = SubResource( 1 )
 animation = "splash"
+frame = 2
 playing = true
 
 [node name="Splash4" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 434, 486 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 7
+frame = 1
 playing = true
 
 [node name="Splash5" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 179, 497 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 5
+frame = 7
 playing = true
 
 [node name="Splash6" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 923, 375 )
 frames = SubResource( 1 )
 animation = "splash"
+frame = 2
 playing = true
 
 [node name="Splash7" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1167, 438 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 3
+frame = 5
 playing = true
 
 [node name="Splash8" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 297, 312 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 6
 playing = true
 
 [node name="Splash9" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 91, 334 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 2
+frame = 4
 playing = true
 
 [node name="Splash10" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 638, 325 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 6
 playing = true
 
 [node name="Splash11" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1213, 94 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 2
+frame = 4
 playing = true
 
 [node name="Splash12" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 660, 74 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 3
+frame = 5
 playing = true
 
 [node name="Splash13" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 668, 514 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 3
+frame = 5
 playing = true
 
 [node name="Splash14" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 907, 649 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Splash15" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 1126, 592 )
 frames = SubResource( 1 )
 animation = "splash"
+frame = 2
 playing = true
 
 [node name="Splash16" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 324, 159 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Splash17" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 814, 200 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 5
+frame = 7
 playing = true
 
 [node name="Splash18" type="AnimatedSprite" parent="Splashes"]
 position = Vector2( 43, 39 )
 frames = SubResource( 1 )
 animation = "splash"
-frame = 4
+frame = 6
 playing = true
 
 [node name="WholeScreenButton" type="Button" parent="."]
@@ -318,6 +318,7 @@ text = "Brawo!"
 fit_content_height = true
 
 [node name="LakeAudio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 640, 360 )
 stream = ExtResource( 55 )
 
 [connection signal="pressed" from="WholeScreenButton" to="." method="_on_WholeScreenButton_pressed"]
