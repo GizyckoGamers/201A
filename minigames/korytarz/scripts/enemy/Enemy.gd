@@ -46,7 +46,7 @@ func _physics_process(delta):
 		
 		update()
 		if _vision.check_see_player():
-			_is_player_found = true
+			_is_player_found = false #true
 		
 		if is_zero_approx(angle):
 			move_and_slide(direction * Constants.movespeed)

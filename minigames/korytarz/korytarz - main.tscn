@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://minigames/korytarz/scripts/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://minigames/korytarz/sprites/player.png" type="Texture" id=2]
@@ -141,8 +141,13 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 7/z_index = 0
 
 [sub_resource type="CapsuleShape2D" id=27]
-radius = 23.0
-height = 26.0
+radius = 24.0
+height = 27.0
+
+[sub_resource type="GDScript" id=29]
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 100, 220 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
@@ -170,3 +175,28 @@ texture = ExtResource( 2 )
 position = Vector2( 0, 2 )
 current = true
 smoothing_enabled = true
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2( 0, 2 )
+shape = SubResource( 27 )
+
+[node name="CorridorLeft" type="Area2D" parent="."]
+script = SubResource( 29 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CorridorLeft"]
+position = Vector2( -140, 500 )
+shape = SubResource( 28 )
+
+[node name="CorridorRight" type="Area2D" parent="."]
+position = Vector2( 2480, 0 )
+script = SubResource( 29 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CorridorRight"]
+position = Vector2( -140, 500 )
+shape = SubResource( 28 )
+
+[connection signal="body_entered" from="CorridorLeft" to="." method="_on_CorridorLeft_body_entered"]
+[connection signal="body_entered" from="CorridorRight" to="." method="_on_CorridorRight_body_entered"]
+[connection signal="body_entered" from="CorridorRight" to="." method="_on_CorridorLeft_body_entered"]
