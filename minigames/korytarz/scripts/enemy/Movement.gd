@@ -19,8 +19,6 @@ func _generate_path():
 func _is_close(position1: Vector2, position2: Vector2):
 	return abs(position1.x - position2.x) < 4 and abs(position1.y - position2.y) < 4
 
-
-
 func _next_spot():
 	if not check_empty_spots():
 		if _is_close(_current_position, _spots[0].position):

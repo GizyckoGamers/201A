@@ -4,7 +4,7 @@ const Constants = preload("Constants.gd")
 
 var _is_playing = true
 
-func has_lost():
+func game_over():
 	_is_playing = false
 
 func _ready():
@@ -28,7 +28,6 @@ func _physics_process(delta):
 			motion.x -= 1
 			tolook.x -= 1
 		
-		# looks where it goes
 		look_at(tolook)
 		
 		motion.normalized()

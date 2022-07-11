@@ -17,8 +17,8 @@ func update_vision_lines():
 	var result1 = _space_state.intersect_ray(_enemy.global_position, _enemy.global_position + direction1)
 	var result2 = _space_state.intersect_ray(_enemy.global_position, _enemy.global_position + direction2)
 	
-	_enemy.draw_line(Vector2(), (result1.position - _enemy.global_position).rotated(-_enemy.rotation), Constants.color)
-	_enemy.draw_line(Vector2(), (result2.position - _enemy.global_position).rotated(-_enemy.rotation), Constants.color)
+	_enemy.draw_line(Vector2(), (result1.position - _enemy.global_position).rotated(-_enemy.rotation), Constants.color, 2.5)
+	_enemy.draw_line(Vector2(), (result2.position - _enemy.global_position).rotated(-_enemy.rotation), Constants.color, 2.5)
 	_enemy.draw_circle((result1.position - _enemy.global_position).rotated(-_enemy.rotation), 10, Constants.color)
 	_enemy.draw_circle((result2.position - _enemy.global_position).rotated(-_enemy.rotation), 10, Constants.color)
 

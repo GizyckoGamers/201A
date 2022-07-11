@@ -97,7 +97,6 @@ func _get_all_door_spots(prev_spot, spot):
 	
 	# TODO: AI path optimization by going through balcony
 	
-	
 	elif prev_spot.room_id != spot.room_id:
 		
 		# leave
