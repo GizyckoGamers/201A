@@ -117,10 +117,10 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 6/z_index = 0
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 25, 25 )
+extents = Vector2( 35, 35 )
 
 [sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 26, 26 )
+extents = Vector2( 36, 36 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
@@ -138,6 +138,7 @@ position = Vector2( 75, 423 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 6, 3 )
 shape = SubResource( 18 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
@@ -151,4 +152,5 @@ smoothing_enabled = true
 [node name="Area2D" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2( 6, 3 )
 shape = SubResource( 19 )
