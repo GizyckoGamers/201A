@@ -142,17 +142,17 @@ func _add_intermediate_spots(starting_position, spots):
 		
 
 	all_spots += _create_door_spot(false, spots[-1].room_id, false, true)
-		
+	
 	return all_spots
 
 ### RETURN RESULT
-func get_spots_path(starting_position):
+func get_spots_path():
 	var spots = _generate_spots()
 	
-	var sorted_spots = _find_path(starting_position, spots)
-
-	var path = _add_intermediate_spots(starting_position, sorted_spots)
-
-	var full_path =  _add_start_and_end_doors(path)
+	var sorted_spots = _find_path(Constants.kadra_spawn_left_spots[-1], spots)
+	
+	var path = _add_intermediate_spots(Constants.kadra_spawn_left_spots[-1], sorted_spots)
+	
+	var full_path = _add_start_and_end_doors(path)
 	
 	return full_path

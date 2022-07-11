@@ -1,10 +1,12 @@
 const rooms_amount = 8
+const enemy_amount = 8
 
 const movespeed = 200
 const rotationspeed = 2
 const spot_amount = 14
 const balcony_chance = 10  # %  - (out of 100) 
 const view_angle = PI/6
+const color = Color(0.5, 0.5, 0.5)
 
 const start_door = [
 	Vector2(-120, 680), # before entrance
@@ -41,4 +43,18 @@ const balcony_left_door = [
 const balcony_right_door = [
 	Vector2(320, 160), # before right entrance
 	Vector2(320, 40)   # after right entrance
+]
+
+const kadra_spawn_left_spots = [
+	Vector2(-120, 320),
+	Vector2(-120, 420),
+	Vector2(-120, 520),
+	Vector2(-120, 620)
+]
+
+const kadra_spawn_right_spots = [
+	Vector2(2400, 320),
+	Vector2(2400, 420),
+	Vector2(2400, 520),
+	Vector2(2400, 620)
 ]
