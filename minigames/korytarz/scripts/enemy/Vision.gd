@@ -27,6 +27,6 @@ func check_see_player():
 
 	if result and result.collider is Player:
 		var v1 = _enemy.global_position.direction_to(_player.global_position)
-		var v2 = Vector2(1, 0).normalized()
+		var v2 = Vector2(1, 0).rotated(_enemy.rotation)
 		
 		return cos(Constants.view_angle/2) <= v1.dot(v2)
