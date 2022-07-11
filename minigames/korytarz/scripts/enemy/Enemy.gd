@@ -10,6 +10,7 @@ var _movement = null
 var _vision = null
 var _left_start = null
 var _is_player_found = false
+var _is_done = false
 
 func _init(left_start):
 	_left_start = left_start
@@ -36,8 +37,8 @@ func _ready():
 	_vision = Vision.new(self, player)
 
 func _physics_process(delta):
-	if _movement and not _is_player_found:
-		_movement.current_position = global_position
+	if _movement and not _is_player_found and not _is_done:
+		_movement.update_position(global_position)
 		
 		var direction = _movement.navigate()
 		
@@ -46,7 +47,10 @@ func _physics_process(delta):
 		
 		update()
 		if _vision.check_see_player():
-			_is_player_found = true
+			game_over()
+			
+		if _movement.check_empty_spots():
+			finished()
 		
 		if is_zero_approx(angle):
 			move_and_slide(direction * Constants.movespeed)
@@ -57,6 +61,12 @@ func has_found_player():
 func game_over():
 	_is_player_found = true
 
+func check_done():
+	return _is_done
+	
+func finished():
+	_is_done = true
+	
 func _draw():
 	if _vision:
 		_vision.update_vision_lines()

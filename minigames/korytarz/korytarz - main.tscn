@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://minigames/korytarz/scripts/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://minigames/korytarz/sprites/player.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://minigames/korytarz/sprites/wall_v3_final.png" type="Texture" id=6]
 [ext_resource path="res://minigames/korytarz/sprites/floor_gray_v2.png" type="Texture" id=7]
 [ext_resource path="res://minigames/korytarz/sprites/barierka_front_v2.png" type="Texture" id=8]
+[ext_resource path="res://res/back_button.png" type="Texture" id=9]
 
 [sub_resource type="NavigationPolygon" id=20]
 vertices = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
@@ -182,6 +183,18 @@ smoothing_enabled = true
 position = Vector2( 0, 2 )
 shape = SubResource( 27 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
+
+[node name="BackButton" type="Node2D" parent="Player/CanvasLayer"]
+position = Vector2( 48, 48 )
+scale = Vector2( 2, 2 )
+z_index = 15
+
+[node name="BackButton" type="TextureButton" parent="Player/CanvasLayer/BackButton"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 9 )
+
 [node name="CorridorLeft" type="Area2D" parent="."]
 script = SubResource( 29 )
 
@@ -197,6 +210,6 @@ script = SubResource( 29 )
 position = Vector2( -140, 500 )
 shape = SubResource( 28 )
 
+[connection signal="pressed" from="Player/CanvasLayer/BackButton/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="body_entered" from="CorridorLeft" to="." method="_on_CorridorLeft_body_entered"]
 [connection signal="body_entered" from="CorridorRight" to="." method="_on_CorridorRight_body_entered"]
-[connection signal="body_entered" from="CorridorRight" to="." method="_on_CorridorLeft_body_entered"]

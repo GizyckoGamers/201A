@@ -9,7 +9,7 @@ func _generate_spots():
 	var spots = []
 
 	randomize()
-	for i in range(Constants.rooms_amount):
+	for i in range(Constants.spot_amount):
 		spots.append(_generate_spot())
 	
 	return spots

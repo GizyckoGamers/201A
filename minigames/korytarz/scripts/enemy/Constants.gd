@@ -4,7 +4,7 @@ const enemy_amount = 4
 const movespeed = 160
 const rotationspeed = 1.5
 const spot_amount = 14
-const balcony_chance = 10  # %  - (out of 100) 
+const balcony_chance = 18 # %  - (out of 100) 
 const view_angle = PI/6
 const color = Color(0.5, 0.5, 0.5)
 
