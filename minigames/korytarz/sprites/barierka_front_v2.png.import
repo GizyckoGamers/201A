@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barierka_up.png-ecf2a07b9bc99eb960954a1d15cb6c75.stex"
+path="res://.import/barierka_front_v2.png-d282a0260926acb113fae10fd86edc07.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/korytarz/sprites/barierka_up.png"
-dest_files=[ "res://.import/barierka_up.png-ecf2a07b9bc99eb960954a1d15cb6c75.stex" ]
+source_file="res://minigames/korytarz/sprites/barierka_front_v2.png"
+dest_files=[ "res://.import/barierka_front_v2.png-d282a0260926acb113fae10fd86edc07.stex" ]
 
 [params]
 
