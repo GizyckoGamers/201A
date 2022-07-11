@@ -1,8 +1,8 @@
 const rooms_amount = 8
-const enemy_amount = 1
+const enemy_amount = 4
 
-const movespeed = 200
-const rotationspeed = 2
+const movespeed = 160
+const rotationspeed = 1.5
 const spot_amount = 14
 const balcony_chance = 10  # %  - (out of 100) 
 const view_angle = PI/6

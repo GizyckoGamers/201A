@@ -22,5 +22,3 @@ func _process(delta):
 		
 		var player = get_node("Player")
 		player.has_lost()
-		
-		

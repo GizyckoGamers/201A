@@ -1,1 +1,1 @@
-const movespeed = 400
+const movespeed = 350
