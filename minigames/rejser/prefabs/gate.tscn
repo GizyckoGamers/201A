@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://sprites/white_square.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3, 30 )
+
+[node name="start-stop gate" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="WhiteSquare" type="Sprite" parent="."]
+self_modulate = Color( 0, 0.976471, 1, 1 )
+position = Vector2( -5.96046e-08, 0 )
+scale = Vector2( 0.06, 0.6 )
+texture = ExtResource( 2 )
