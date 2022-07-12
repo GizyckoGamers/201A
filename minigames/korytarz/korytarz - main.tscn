@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://minigames/korytarz/scripts/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://minigames/korytarz/sprites/player.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://res/MenuTheme.tres" type="Theme" id=10]
 [ext_resource path="res://minigames/korytarz/scripts/timer/TimeText.gd" type="Script" id=11]
 [ext_resource path="res://res/back_button.png" type="Texture" id=12]
+[ext_resource path="res://res/restart_button.png" type="Texture" id=13]
 
 [sub_resource type="NavigationPolygon" id=20]
 vertices = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
@@ -202,7 +203,7 @@ margin_left = 281.0
 margin_top = 150.0
 margin_right = 345.0
 margin_bottom = 214.0
-texture_normal = ExtResource( 12 )
+texture_normal = ExtResource( 13 )
 
 [node name="TimeText" type="Node2D" parent="Player/CanvasLayer"]
 position = Vector2( 1200, 200 )
