@@ -2,6 +2,17 @@ extends CanvasLayer
 
 signal use_move_vector
 
+##### JAK UŻYWAĆ #####
+# Dodaj sb canvas layer do sceny
+# kliknij na inspector -> node
+# on będzie miał signal "use_move_vector"
+# dodaj sobie to do jakiegoś skryptu
+# jest to funkcja która daje Vector2 z przesunięciem joya - od -1 do 1
+# przyklady:
+#   -1 -1 => lewy górny
+#   -1  0 => lewy środek
+#   0.5 0.5 => lekko w prawy dół
+
 # YOU HAVE TO UPDATE THIS IF YOU CHANGE SIZE/SCALE OF BUTTON!!!
 const buttonSize = Vector2(256, 256)
 var initInnerCirclePos: Vector2
