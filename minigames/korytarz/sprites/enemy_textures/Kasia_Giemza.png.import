@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barierka_front_v2_bgn_beton.png-17666dec81ce7de33d55f666a62018e7.stex"
+path="res://.import/Kasia_Giemza.png-8480b8eebf2cfb039377fda048625a96.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/korytarz/sprites/barierka_front_v2_bgn_beton.png"
-dest_files=[ "res://.import/barierka_front_v2_bgn_beton.png-17666dec81ce7de33d55f666a62018e7.stex" ]
+source_file="res://minigames/korytarz/sprites/enemy_textures/Kasia_Giemza.png"
+dest_files=[ "res://.import/Kasia_Giemza.png-8480b8eebf2cfb039377fda048625a96.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/beton.png-0d6011a65a3e9965751cc1fc033ffe56.stex"
+path="res://.import/hubert.png-641ee5478deaf49f0907f131a710cd0c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/korytarz/sprites/beton.png"
-dest_files=[ "res://.import/beton.png-0d6011a65a3e9965751cc1fc033ffe56.stex" ]
+source_file="res://minigames/korytarz/sprites/enemy_textures/hubert.png"
+dest_files=[ "res://.import/hubert.png-641ee5478deaf49f0907f131a710cd0c.stex" ]
 
 [params]
 

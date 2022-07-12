@@ -47,8 +47,10 @@ func _generate_wave():
 		add_child(enemy)
 
 func _ready():
+	randomize()
+	
 	_time_per_wave = TimerConstants.game_duration*60 / EnemyConstants.wave_amount
-
+	
 	_enemy_factory = EnemyFactory.new()
 	
 	_generate_wave()

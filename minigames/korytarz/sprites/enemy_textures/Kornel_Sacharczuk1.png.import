@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-4eb20fd41c986c2746795cfe53b11b05.stex"
+path="res://.import/Kornel_Sacharczuk1.png-8d062855293df0dbd748e10508c97c0c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/korytarz/sprites/player.png"
-dest_files=[ "res://.import/player.png-4eb20fd41c986c2746795cfe53b11b05.stex" ]
+source_file="res://minigames/korytarz/sprites/enemy_textures/Kornel_Sacharczuk1.png"
+dest_files=[ "res://.import/Kornel_Sacharczuk1.png-8d062855293df0dbd748e10508c97c0c.stex" ]
 
 [params]
 
