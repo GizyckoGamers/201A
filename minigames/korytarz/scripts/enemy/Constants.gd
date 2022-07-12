@@ -1,15 +1,15 @@
 const enemy_amount_per_wave = 2
-const wave_amount = 4
+const wave_amount = 8
 
 const rooms_amount = 8
 
 const movespeed = 160
-const rotationspeed = 1.5
-const spot_amount = 4
-const balcony_chance = 18 # %  - (out of 100) 
+const rotationspeed = 1
+const spot_amount = 8
+const balcony_chance = 20 # %  - (out of 100) 
 
 const view_angle = PI/6
-const color = Color(0.5, 0.5, 0.5)
+const color = Color.black
 
 const spotting_time = 0.1  # seconds
 const close_distance = 300
