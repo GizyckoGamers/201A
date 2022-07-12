@@ -1,7 +1,6 @@
 [gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://minigames/korytarz/scripts/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://minigames/korytarz/sprites/player.png" type="Texture" id=2]
 [ext_resource path="res://minigames/korytarz/scripts/main.gd" type="Script" id=3]
 [ext_resource path="res://minigames/korytarz/sprites/staircase_enemy/kieras(pudzian).png" type="Texture" id=4]
 [ext_resource path="res://minigames/korytarz/sprites/staircase_enemy/kierasv2.png" type="Texture" id=5]
@@ -153,6 +152,10 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 radius = 24.0
 height = 27.0
 
+[sub_resource type="StreamTexture" id=40]
+flags = 4
+load_path = "res://.import/player.png-4eb20fd41c986c2746795cfe53b11b05.stex"
+
 [sub_resource type="Theme" id=30]
 
 [sub_resource type="GDScript" id=29]
@@ -180,7 +183,7 @@ position = Vector2( 0, 2 )
 shape = SubResource( 27 )
 
 [node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 2 )
+texture = SubResource( 40 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 2 )
@@ -286,7 +289,7 @@ position = Vector2( -140, 500 )
 shape = SubResource( 28 )
 
 [node name="Sprite" type="Sprite" parent="CorridorRight"]
-position = Vector2( -136, 342 )
+position = Vector2( -140, 338 )
 texture = ExtResource( 5 )
 
 [node name="Joystick" parent="." instance=ExtResource( 9 )]
