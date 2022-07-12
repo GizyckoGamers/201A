@@ -5,7 +5,6 @@ const SpotsGenerator = preload("SpotsGenerator.gd")
 const Movement = preload("Movement.gd")
 const Vision = preload("Vision.gd")
 const Spotting = preload("Spotting.gd")
-const enemy_texture = preload("../../sprites/enemy.png")
 
 var _movement = null
 var _vision = null
@@ -14,7 +13,7 @@ var _left_start = null
 var _is_done = false
 var _is_running = true
 
-func _init(left_start):
+func _init(left_start, texture):
 	_left_start = left_start
 	
 	if _left_start:
@@ -23,7 +22,7 @@ func _init(left_start):
 		global_position = Constants.kadra_spawn_right_spots[rand_range(0, Constants.kadra_spawn_right_spots.size())]
 	
 	var sprite = Sprite.new()
-	sprite.texture = enemy_texture
+	sprite.texture = texture
 	add_child(sprite)
 
 

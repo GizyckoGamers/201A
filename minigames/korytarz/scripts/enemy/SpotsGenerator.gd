@@ -8,7 +8,6 @@ func _generate_spot():
 func _generate_spots():
 	var spots = []
 
-	randomize()
 	for i in range(Constants.spot_amount):
 		spots.append(_generate_spot())
 	

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floor_brown_v2.png-1113b3fc8f295b957a092c411f9d7071.stex"
+path="res://.import/paulina.png-8f64f15683a0f5050f3ce471c6f8e680.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/korytarz/sprites/floor_brown_v2.png"
-dest_files=[ "res://.import/floor_brown_v2.png-1113b3fc8f295b957a092c411f9d7071.stex" ]
+source_file="res://minigames/korytarz/sprites/enemy_textures/paulina.png"
+dest_files=[ "res://.import/paulina.png-8f64f15683a0f5050f3ce471c6f8e680.stex" ]
 
 [params]
 

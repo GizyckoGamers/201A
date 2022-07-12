@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy.png-100b5e1e2e2b2b10c78cdf37a17311e2.stex"
+path="res://.import/floor_gray_v3.png-f223514a397c9ad2f6cf41e1484f2312.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/korytarz/sprites/enemy.png"
-dest_files=[ "res://.import/enemy.png-100b5e1e2e2b2b10c78cdf37a17311e2.stex" ]
+source_file="res://minigames/korytarz/sprites/tile_textures/floor_gray_v3.png"
+dest_files=[ "res://.import/floor_gray_v3.png-f223514a397c9ad2f6cf41e1484f2312.stex" ]
 
 [params]
 

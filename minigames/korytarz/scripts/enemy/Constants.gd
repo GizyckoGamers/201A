@@ -65,3 +65,17 @@ const kadra_spawn_right_spots = [
 	Vector2(2400, 520),
 	Vector2(2400, 620)
 ]
+
+const kadra_texture_links = [
+	"res://minigames/korytarz/sprites/enemy_textures/adasko.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/Emilia_staszor.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/hubert.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/joanna_dudek.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/Joanna_Olejnik.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/Kasia_Giemza.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/Kornel_Sacharczuk1.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/Lidia_Lappo.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/majczyk.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/paulina.png", 
+	"res://minigames/korytarz/sprites/enemy_textures/Tymoteusz_Warmiak.png"
+]

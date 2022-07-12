@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floor_gray_v2.png-03892a1c2f9b1b06cc523b7a1c2bce04.stex"
+path="res://.import/Tymoteusz_Warmiak.png-c8bbc104ee50d1ced7d79a420cef7ef7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/korytarz/sprites/floor_gray_v2.png"
-dest_files=[ "res://.import/floor_gray_v2.png-03892a1c2f9b1b06cc523b7a1c2bce04.stex" ]
+source_file="res://minigames/korytarz/sprites/enemy_textures/Tymoteusz_Warmiak.png"
+dest_files=[ "res://.import/Tymoteusz_Warmiak.png-c8bbc104ee50d1ced7d79a420cef7ef7.stex" ]
 
 [params]
 
