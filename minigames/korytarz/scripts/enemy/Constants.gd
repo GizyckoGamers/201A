@@ -7,8 +7,13 @@ const movespeed = 160
 const rotationspeed = 1.5
 const spot_amount = 14
 const balcony_chance = 18 # %  - (out of 100) 
+
 const view_angle = PI/6
 const color = Color(0.5, 0.5, 0.5)
+
+const spotting_time = 0.3  # seconds
+const close_distance = 300
+const distance_weight = 400
 
 const start_door = [
 	Vector2(-120, 680), # before entrance

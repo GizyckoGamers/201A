@@ -1,4 +1,4 @@
-const game_duration = 4  # in minutes
+const game_duration = 2  # in minutes
 
 const start_hour = 22
 const start_minute = 0

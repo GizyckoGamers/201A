@@ -4,10 +4,12 @@ const Constants = preload("Constants.gd")
 const SpotsGenerator = preload("SpotsGenerator.gd")
 const Movement = preload("Movement.gd")
 const Vision = preload("Vision.gd")
+const Spotting = preload("Spotting.gd")
 const enemy_texture = preload("../../sprites/enemy.png")
 
 var _movement = null
 var _vision = null
+var _spotting = null
 var _left_start = null
 var _is_running = true
 
@@ -35,6 +37,7 @@ func _ready():
 	
 	_movement = Movement.new(level_navigation, global_position, spots)
 	_vision = Vision.new(self, player)
+	_spotting = Spotting.new()
 
 func _physics_process(delta):
 	if _movement and _is_running:
@@ -46,14 +49,14 @@ func _physics_process(delta):
 		rotate(sign(angle) * min(delta * Constants.rotationspeed, abs(angle)))
 		
 		update()
-		if _vision.check_see_player():
-			game_over()
+		var distance = _vision.get_spotting_distance()
+		_spotting.spot(distance, delta)
 		
 		if is_zero_approx(angle):
 			move_and_slide(direction * Constants.movespeed)
 
-func has_found_player():
-	return not _is_running
+func get_spotting_progress():
+	return _spotting.get_progress()
 
 func game_over():
 	_is_running = false

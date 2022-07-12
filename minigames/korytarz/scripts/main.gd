@@ -11,6 +11,10 @@ var _time_per_wave = null # (in between waves) in seconds
 var _to_wave = 0  # in seconds
 var _game_state = "IN PROGRESS"
 
+func _update_spotting(value):
+	var spotting_bar = get_node("Player/CanvasLayer/SpottingProgressBar/SpottingProgressBar")
+	spotting_bar.value = value
+
 func _end_game():
 	for enemy in _enemy_factory.get_enemies():
 		enemy.game_over()
@@ -50,11 +54,15 @@ func _ready():
 	_generate_wave()
 
 func _process(delta):
+	var max_progress = 0
 	for enemy in _enemy_factory.get_enemies():
-		if enemy.has_found_player():
-			_loose_game()
-			break
-		
+		if enemy.get_spotting_progress():
+			max_progress = max(max_progress, enemy.get_spotting_progress())
+	
+	_update_spotting(max_progress)
+	if max_progress == 100:
+		_loose_game()
+			
 	var timer = get_node("Player/CanvasLayer/TimeText")
 	if timer.check_finished():
 		_win_game()

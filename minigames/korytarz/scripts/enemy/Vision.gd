@@ -22,11 +22,13 @@ func update_vision_lines():
 	_enemy.draw_circle((result1.position - _enemy.global_position).rotated(-_enemy.rotation), 10, Constants.color)
 	_enemy.draw_circle((result2.position - _enemy.global_position).rotated(-_enemy.rotation), 10, Constants.color)
 
-func check_see_player():
+func get_spotting_distance():
 	var result = _space_state.intersect_ray(_enemy.global_position, _player.global_position)
 
 	if result and result.collider is Player:
 		var v1 = _enemy.global_position.direction_to(_player.global_position)
 		var v2 = Vector2(1, 0).rotated(_enemy.rotation)
 		
-		return cos(Constants.view_angle/2) <= v1.dot(v2)
+		if cos(Constants.view_angle/2) <= v1.dot(v2):
+			return _player.global_position.distance_to(_enemy.global_position)
+	return 0
