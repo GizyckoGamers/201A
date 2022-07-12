@@ -1,6 +1,6 @@
 extends Node2D
 
-const player = preload("res://scripts/kill_me.gd")
+const player = preload("res://minigames/rejser/scripts/kill_me.gd")
 
 var time: float = 0.0
 var sec_1_time: float = -1.0
@@ -31,9 +31,9 @@ func _on_main_gate_body_entered(body: Node) -> void:
 	
 	if !started:
 		sec_2_time = time - sec_1_time
-		print("total time: ", as_nice_string(time))
-		print("sec1 time: ", as_nice_string(sec_1_time))
-		print("sec2 time: ", as_nice_string(sec_2_time))
+		print_debug("total time: ", as_nice_string(time))
+		print_debug("sec1 time: ", as_nice_string(sec_1_time))
+		print_debug("sec2 time: ", as_nice_string(sec_2_time))
 
 func _on_sec_gate_1_body_entered(body: Node) -> void:
 	sec_1_time = time

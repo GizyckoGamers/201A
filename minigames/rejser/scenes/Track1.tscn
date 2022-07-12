@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://prefabs/newest_kinematic_player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://sprites/great_racing.png" type="Texture" id=2]
-[ext_resource path="res://prefabs/gate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scripts/start_stop_gate.gd" type="Script" id=4]
+[ext_resource path="res://minigames/rejser/prefabs/newest_kinematic_player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://minigames/rejser/sprites/great_racing.png" type="Texture" id=2]
+[ext_resource path="res://minigames/rejser/prefabs/gate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://minigames/rejser/scripts/start_stop_gate.gd" type="Script" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,15 +13,12 @@ scale = Vector2( 7, 7 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="GreatRacing"]
-visible = false
 
 [node name="InnerPolygon" type="CollisionPolygon2D" parent="GreatRacing/Area2D"]
-scale = Vector2( 1, 1 )
 build_mode = 1
 polygon = PoolVector2Array( -315.571, -188.429, 137.286, -188.571, 142.286, -186.571, 259.714, -158.571, 198, -157.143, 101, -156, -123, -155.286, -139, -153.286, -151.857, -148.143, -157.143, -143.286, -160.286, -137, -161.286, -134, -161.429, -123.857, -159.143, -114.714, -149.286, -91.7143, -140.286, -75.1429, -131.143, -61.8571, -119.286, -49.7143, -115.429, -46.5714, -108.286, -41.5714, -100.429, -36.5714, -92.2857, -31.8571, -51.2857, -9.42857, -40, -4.71429, -22.8571, 0.142857, -8, 0.428571, -4, -0.571429, 5.14286, -4.42857, 18.2857, -13.7143, 28.4286, -21.7143, 42.1429, -32.5714, 53.2857, -40.7143, 62.1429, -45.5714, 71.4286, -45.7143, 74.8571, -44.7143, 79.8571, -42.7143, 86.8571, -39.5714, 124.714, -19.8571, 123.429, -19, 118.857, -18.1429, 77.8571, -7.28571, 25.7143, 7, -34.2857, 22.7143, -114.429, 42.8571, -172.143, 54, -181, 54.8571, -206, 54.7143, -216.857, 51.8571, -220.857, 48.8571, -224.143, 46.4286, -226.714, 41.7143, -229.857, 36, -232.571, 27.8571, -237.143, 13.8571, -240.714, -1.14286, -245, -16, -261, -77.1429, -272.857, -118, -278.857, -134, -284.714, -145, -294, -152.143, -297, -153.143, -305, -153.286, -310.143, -151.286, -317.286, -144.286, -322.143, -134.286, -334.143, -96.1429, -349.143, -40, -382.571, 80.7143, -384.571, 24.7143, -390.714, -73.5714, -390.857, -122, -388.714, -141.429, -386.714, -151.143, -382.857, -163, -379.857, -168, -378.857, -169.714, -372.571, -176, -370.857, -176.714, -367.857, -178.571, -360.857, -181.714, -350, -184.714, -337.857, -186.571, -327, -187.714 )
 
 [node name="OuterPolygon1" type="CollisionPolygon2D" parent="GreatRacing/Area2D"]
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( -305.286, -216.286, -261.857, -216.143, -261.857, -215.429, 148.857, -215.286, 153.143, -213.286, 154.286, -211.714, 158.857, -211.143, 289.286, -179, 311.714, -169.429, 320.143, -160, 321.286, -153.571, 320.286, -148, 316, -141.714, 304.857, -136.429, 277, -132.857, 236.571, -130.714, 194.286, -129.714, 337.429, -61.7143, 405.429, -224.571, -43.2857, -262.286 )
 
 [node name="OuterPolygon2" type="CollisionPolygon2D" parent="GreatRacing/Area2D"]
@@ -32,7 +29,6 @@ polygon = PoolVector2Array( -383.857, 137.429, -390.286, 137.286, -397.429, 134.
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( -1122, -1406 )
-steering_angle = 25.0
 
 [node name="gates" type="Node2D" parent="."]
 script = ExtResource( 4 )

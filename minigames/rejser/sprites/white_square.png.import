@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/white_square.png-aeee913b5ca8098cd541c4643b00bdd7.stex"
+path="res://.import/white_square.png-bedb25c6a15ab016c8c922d4a59e3ab3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/white_square.png"
-dest_files=[ "res://.import/white_square.png-aeee913b5ca8098cd541c4643b00bdd7.stex" ]
+source_file="res://minigames/rejser/sprites/white_square.png"
+dest_files=[ "res://.import/white_square.png-bedb25c6a15ab016c8c922d4a59e3ab3.stex" ]
 
 [params]
 

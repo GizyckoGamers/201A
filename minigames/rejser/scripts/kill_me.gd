@@ -46,15 +46,15 @@ func apply_friction():
 
 func get_input():
 	var turn = 0
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		turn += 1
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		turn -= 1
 	steer_direction = turn * deg2rad(steering_angle)
 #	if Input.is_action_pressed("ui_up"):
 #		acceleration = transform.x * engine_power
-	acceleration += transform.x * engine_power * Input.get_action_strength("ui_up")
-	acceleration += transform.x * braking * Input.get_action_strength("ui_down")
+	acceleration += transform.x * engine_power * Input.get_action_strength("up")
+	acceleration += transform.x * braking * Input.get_action_strength("down")
 #	if Input.is_action_pressed("ui_down") || Input.is_action_pressed("ui_accept"):
 #		acceleration = transform.x * braking
 	if Input.is_action_just_pressed("right_key"):
@@ -63,7 +63,7 @@ func get_input():
 	if Input.is_action_just_pressed("left_key"):
 		gear = clamp(gear - 1, -1, max_gear)
 	
-	fully_stopping = Input.is_action_pressed("ui_accept")
+	fully_stopping = Input.is_action_pressed("ui")
 
 func calculate_steering(delta):
 	var rear_wheel = position - transform.x * wheel_base / 2.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://sprites/white_square.png" type="Texture" id=2]
+[ext_resource path="res://minigames/rejser/sprites/white_square.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 30 )

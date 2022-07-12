@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/great_racing.png-a266c814dc1aed943175c1eeb626294b.stex"
+path="res://.import/great_racing.png-b2780bab9287613a9e2311289d175454.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/great_racing.png"
-dest_files=[ "res://.import/great_racing.png-a266c814dc1aed943175c1eeb626294b.stex" ]
+source_file="res://minigames/rejser/sprites/great_racing.png"
+dest_files=[ "res://.import/great_racing.png-b2780bab9287613a9e2311289d175454.stex" ]
 
 [params]
 
