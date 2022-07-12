@@ -1,5 +1,5 @@
-const rooms_amount = 8
 const enemy_amount = 4
+const rooms_amount = 8
 
 const movespeed = 160
 const rotationspeed = 1.5

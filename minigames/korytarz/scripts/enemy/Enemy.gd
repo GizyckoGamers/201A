@@ -9,8 +9,7 @@ const enemy_texture = preload("../../sprites/enemy.png")
 var _movement = null
 var _vision = null
 var _left_start = null
-var _is_player_found = false
-var _is_done = false
+var _is_running = true
 
 func _init(left_start):
 	_left_start = left_start
@@ -37,7 +36,7 @@ func _ready():
 	_vision = Vision.new(self, player)
 
 func _physics_process(delta):
-	if _movement and not _is_player_found and not _is_done:
+	if _movement and _is_running:
 		_movement.update_position(global_position)
 		
 		var direction = _movement.navigate()
@@ -48,25 +47,16 @@ func _physics_process(delta):
 		update()
 		if _vision.check_see_player():
 			game_over()
-			
-		if _movement.check_empty_spots():
-			finished()
 		
 		if is_zero_approx(angle):
 			move_and_slide(direction * Constants.movespeed)
 
 func has_found_player():
-	return _is_player_found
+	return not _is_running
 
 func game_over():
-	_is_player_found = true
+	_is_running = false
 
-func check_done():
-	return _is_done
-	
-func finished():
-	_is_done = true
-	
 func _draw():
 	if _vision:
 		_vision.update_vision_lines()

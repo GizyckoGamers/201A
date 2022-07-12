@@ -7,16 +7,19 @@ var _enemy_factory = null
 var _game_state = "IN PROGRESS"
 
 func _end_game():
+	for enemy in _enemy_factory.get_enemies():
+		enemy.game_over()
+	
 	var player = get_node("Player")
 	player.game_over()
 	
 	var restart_button = get_node("Player/CanvasLayer/RestartButton")
 	restart_button.visible = true
-
-func _loose_game():
-	for enemy in _enemy_factory.get_enemies():
-		enemy.game_over()
 	
+	var time_text = get_node("Player/CanvasLayer/TimeText")
+	time_text.stop()
+
+func _loose_game():	
 	_end_game()
 	_game_state = "LOST"
 
@@ -37,12 +40,10 @@ func _process(delta):
 	for enemy in _enemy_factory.get_enemies():
 		if enemy.has_found_player():
 			_loose_game()
-			
-	var all_done = true
-	for enemy in _enemy_factory.get_enemies():
-		if not enemy.check_done():
-			all_done = false
-	if all_done:
+			break
+		
+	var timer = get_node("Player/CanvasLayer/TimeText")
+	if timer.check_finished():
 		_win_game()
 
 func _on_CorridorLeft_body_entered(body):

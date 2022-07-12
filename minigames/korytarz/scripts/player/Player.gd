@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 const Constants = preload("Constants.gd")
 
-var _is_playing = true
+var _is_running = true
 
 func game_over():
-	_is_playing = false
+	_is_running = false
 
 func _ready():
 	pass
@@ -14,7 +14,7 @@ func _physics_process(delta):
 	var motion = Vector2()
 	var tolook = position
 	
-	if _is_playing:
+	if _is_running:
 		if Input.is_action_pressed("up"):
 			motion.y -= 1
 			tolook.y -= 1

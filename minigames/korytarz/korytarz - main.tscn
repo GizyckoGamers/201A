@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://minigames/korytarz/scripts/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://minigames/korytarz/sprites/player.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://minigames/korytarz/sprites/barierka_front_v2.png" type="Texture" id=8]
 [ext_resource path="res://res/back_button.png" type="Texture" id=9]
 [ext_resource path="res://res/MenuTheme.tres" type="Theme" id=10]
+[ext_resource path="res://minigames/korytarz/scripts/timer/TimeText.gd" type="Script" id=11]
 
 [sub_resource type="NavigationPolygon" id=20]
 vertices = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
@@ -146,6 +147,8 @@ points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 radius = 24.0
 height = 27.0
 
+[sub_resource type="Theme" id=30]
+
 [sub_resource type="GDScript" id=29]
 
 [sub_resource type="RectangleShape2D" id=28]
@@ -223,6 +226,23 @@ margin_top = 150.0
 margin_right = 345.0
 margin_bottom = 214.0
 texture_normal = ExtResource( 9 )
+
+[node name="TimeText" type="Node2D" parent="Player/CanvasLayer"]
+position = Vector2( 1200, 200 )
+z_index = 15
+script = ExtResource( 11 )
+
+[node name="TimeText" type="RichTextLabel" parent="Player/CanvasLayer/TimeText"]
+anchor_right = 0.376
+margin_left = -636.0
+margin_top = -133.0
+margin_right = -599.0
+margin_bottom = -118.0
+rect_scale = Vector2( 4, 4 )
+theme = SubResource( 30 )
+tab_size = 1
+text = "22:00"
+fit_content_height = true
 
 [node name="CorridorLeft" type="Area2D" parent="."]
 script = SubResource( 29 )

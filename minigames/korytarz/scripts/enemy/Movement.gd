@@ -20,18 +20,15 @@ func _is_close(position1: Vector2, position2: Vector2):
 	return abs(position1.x - position2.x) < 4 and abs(position1.y - position2.y) < 4
 
 func _next_spot():
-	if not check_empty_spots():
+	if not _spots.empty():
 		if _is_close(_current_position, _spots[0].position):
 			_spots.pop_front()
 			
-			if not check_empty_spots():
+			if not _spots.empty():
 				_path = _generate_path()
 
 func update_position(new_position):
 	_current_position = new_position
-	
-func check_empty_spots():
-	return _spots.empty()
 
 func navigate():
 	if _path.size() > 0:
