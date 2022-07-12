@@ -23,6 +23,7 @@ func _init(left_start):
 	sprite.texture = enemy_texture
 	add_child(sprite)
 
+
 func _ready():
 	var spots = SpotsGenerator.new().get_spots_path()
 	

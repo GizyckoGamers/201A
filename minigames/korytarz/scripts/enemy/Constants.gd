@@ -1,4 +1,6 @@
-const enemy_amount = 4
+const enemy_amount_per_wave = 2
+const wave_amount = 4
+
 const rooms_amount = 8
 
 const movespeed = 160

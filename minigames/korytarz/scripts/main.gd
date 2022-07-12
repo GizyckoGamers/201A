@@ -1,9 +1,14 @@
 extends Node2D
 
+const TimerConstants = preload("timer/Constants.gd")
+const EnemyConstants = preload("enemy/Constants.gd")
 const EnemyFactory = preload("enemy/EnemyFactory.gd")
 const Player = preload("player/Player.gd")
 
 var _enemy_factory = null
+var _wave_cnt = 0
+var _time_per_wave = null # (in between waves) in seconds
+var _to_wave = 0  # in seconds
 var _game_state = "IN PROGRESS"
 
 func _end_game():
@@ -30,11 +35,19 @@ func _win_game():
 	_end_game()
 	_game_state = "WIN"
 
-func _ready():
-	_enemy_factory = EnemyFactory.new()
+func _generate_wave():
+	for i in range(EnemyConstants.enemy_amount_per_wave):
+		_enemy_factory.generate_enemy()
 	
 	for enemy in _enemy_factory.get_enemies():
 		add_child(enemy)
+
+func _ready():
+	_time_per_wave = TimerConstants.game_duration*60 / EnemyConstants.wave_amount
+
+	_enemy_factory = EnemyFactory.new()
+	
+	_generate_wave()
 
 func _process(delta):
 	for enemy in _enemy_factory.get_enemies():
@@ -45,6 +58,11 @@ func _process(delta):
 	var timer = get_node("Player/CanvasLayer/TimeText")
 	if timer.check_finished():
 		_win_game()
+		
+	_to_wave += delta
+	if _to_wave > _time_per_wave:
+		_generate_wave()
+		_to_wave -= _time_per_wave
 
 func _on_CorridorLeft_body_entered(body):
 	if body is Player:
