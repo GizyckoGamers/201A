@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal use_move_vector
+signal move_vector
 
 ##### JAK UŻYWAĆ #####
 # Dodaj sb canvas layer do sceny
@@ -34,7 +34,7 @@ func _input(event):
 		$InnerCircle.position = initInnerCirclePos + move_vector
 		var _half = buttonSize.x / 2
 		move_vector = _mapVector2(move_vector, -_half, _half, -1, 1)
-		emit_signal("use_move_vector", move_vector)
+		emit_signal("move_vector", move_vector)
 	if event is InputEventScreenTouch and !event.is_pressed():
 		$InnerCircle.position = initInnerCirclePos
 		
