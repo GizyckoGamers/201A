@@ -11,6 +11,7 @@ var _movement = null
 var _vision = null
 var _spotting = null
 var _left_start = null
+var _is_done = false
 var _is_running = true
 
 func _init(left_start):
@@ -44,6 +45,8 @@ func _physics_process(delta):
 		_movement.update_position(global_position)
 		
 		var direction = _movement.navigate()
+		if _movement.is_finished():
+			done()
 		
 		var angle = transform.x.angle_to(direction)
 		rotate(sign(angle) * min(delta * Constants.rotationspeed, abs(angle)))
@@ -60,6 +63,12 @@ func get_spotting_progress():
 
 func game_over():
 	_is_running = false
+	
+func done():
+	_is_done = true
+	
+func check_done():
+	return _is_done
 
 func _draw():
 	if _vision:

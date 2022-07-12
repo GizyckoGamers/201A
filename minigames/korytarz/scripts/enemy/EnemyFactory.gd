@@ -9,5 +9,8 @@ func generate_enemy():
 		left_start = true
 	_enemies.append(Enemy.new(left_start))
 
+func remove_enemy(enemy):
+	_enemies.erase(enemy)
+
 func get_enemies():
 	return _enemies

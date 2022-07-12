@@ -56,6 +56,11 @@ func _ready():
 func _process(delta):
 	var max_progress = 0
 	for enemy in _enemy_factory.get_enemies():
+		if enemy.check_done():
+			enemy.free()
+			_enemy_factory.remove_enemy(enemy)
+			continue
+			
 		if enemy.get_spotting_progress():
 			max_progress = max(max_progress, enemy.get_spotting_progress())
 	
