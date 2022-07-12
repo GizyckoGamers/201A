@@ -37,6 +37,7 @@ func _input(event):
 		emit_signal("move_vector", move_vector)
 	if event is InputEventScreenTouch and !event.is_pressed():
 		$InnerCircle.position = initInnerCirclePos
+		emit_signal("move_vector", Vector2(0, 0))
 		
 
 func calculate_move_vector(event_position: Vector2):
