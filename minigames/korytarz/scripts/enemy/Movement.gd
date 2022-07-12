@@ -41,3 +41,6 @@ func navigate():
 	
 	_next_spot()
 	return Vector2.ZERO
+	
+func is_finished():
+	return _spots.size() == 0 and _path.size() == 0
