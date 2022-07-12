@@ -60,7 +60,7 @@ func get_input():
 	#if Input.is_action_just_pressed("left_key"):
 	#	gear = clamp(gear - 1, -1, max_gear)
 	
-	fully_stopping = Input.is_action_pressed("ui")
+	fully_stopping = Input.is_action_pressed("down")
 
 func calculate_steering(delta):
 	var rear_wheel = position - transform.x * wheel_base / 2.0
