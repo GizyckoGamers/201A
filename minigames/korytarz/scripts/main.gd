@@ -46,9 +46,10 @@ func _add_enemy():
 	if enemy:
 		add_child(enemy)
 
-func _ready():
+func _init():
 	randomize()
-	
+
+func _ready():
 	_enemy_factory = EnemyFactory.new()
 	
 	_add_enemy()
