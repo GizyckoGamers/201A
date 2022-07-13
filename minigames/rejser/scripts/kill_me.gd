@@ -36,7 +36,7 @@ func _physics_process(delta):
 	calculate_steering(delta)
 	velocity += acceleration * delta
 	velocity = move_and_slide(velocity)
-	steering_angle = sign(steering_angle) * clamp(abs(sign(steering_angle) * -velocity.length()), 0, sign(steering_angle))
+
 
 func apply_friction():
 	if velocity.length() < 5:
@@ -46,6 +46,11 @@ func apply_friction():
 	acceleration += drag_force + friction_force
 
 func get_input():
+	print(Input.get_action_strength("up"))
+	print(Input.get_action_strength("down"))
+	print(Input.get_action_strength("left"))
+	print(Input.get_action_strength("right"))
+	print("\n")
 	var turn = 0
 	if Input.is_action_pressed("right"):
 		turn += 1
@@ -69,6 +74,7 @@ func calculate_steering(delta):
 	var rear_wheel = position - transform.x * wheel_base / 2.0
 	var front_wheel = position + transform.x * wheel_base / 2.0
 	rear_wheel += velocity * delta
+	print(steer_direction)
 	front_wheel += velocity.rotated(steer_direction) * delta
 	var new_heading = (front_wheel - rear_wheel).normalized()
 	var traction = traction_slow
@@ -89,5 +95,4 @@ func _ready():
 	pass
 
 func _on_Area2D_body_exited(body: Node) -> void:
-	assert(false)
 	print("a cunt left the track: ", body)
