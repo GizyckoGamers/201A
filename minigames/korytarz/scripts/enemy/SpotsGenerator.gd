@@ -13,7 +13,6 @@ func _generate_spots():
 	
 	return spots
 
-
 ### GET PATH
 func _get_distance(position1: Vector2, position2: Vector2):
 	return position1.distance_squared_to(position2)
@@ -48,7 +47,7 @@ func _find_path(starting_position, to_visit):
 	
 	return path
 
-func _create_custom_spot(coordinates, room_id, is_balcony):
+func _create_custom_spot(coordinates, room_id, is_balcony, is_door, is_leave):
 	var spot = Spot.new()
 
 	if is_balcony:
@@ -58,6 +57,8 @@ func _create_custom_spot(coordinates, room_id, is_balcony):
 		
 	spot.room_id = room_id
 	spot.is_balcony = is_balcony
+	spot.is_door = is_door
+	spot.is_leave = is_leave
 	
 	return spot
 
@@ -66,14 +67,14 @@ func _create_door_spot(is_balcony, room_id, is_left, is_leave):
 	
 	if is_balcony:
 		if is_left:
-			spots.append(_create_custom_spot(Constants.balcony_left_door[0], room_id, is_balcony))
-			spots.append(_create_custom_spot(Constants.balcony_left_door[1], room_id, is_balcony))
+			spots.append(_create_custom_spot(Constants.balcony_left_door[0], room_id, is_balcony, true, is_leave))
+			spots.append(_create_custom_spot(Constants.balcony_left_door[1], room_id, is_balcony, true, is_leave))
 		else:
-			spots.append(_create_custom_spot(Constants.balcony_right_door[0], room_id, is_balcony))
-			spots.append(_create_custom_spot(Constants.balcony_right_door[1], room_id, is_balcony))
+			spots.append(_create_custom_spot(Constants.balcony_right_door[0], room_id, is_balcony, true, is_leave))
+			spots.append(_create_custom_spot(Constants.balcony_right_door[1], room_id, is_balcony, true, is_leave))
 	else:
-		spots.append(_create_custom_spot(Constants.room_door[0], room_id, is_balcony))
-		spots.append(_create_custom_spot(Constants.room_door[1], room_id, is_balcony))
+		spots.append(_create_custom_spot(Constants.room_door[0], room_id, is_balcony, true, is_leave))
+		spots.append(_create_custom_spot(Constants.room_door[1], room_id, is_balcony, true, is_leave))
 	
 	if is_leave:
 		spots.invert()
@@ -118,11 +119,11 @@ func _get_all_door_spots(prev_spot, spot):
 
 func _add_start_and_end_doors(spots):
 	return [
-		_create_custom_spot(Constants.start_door[0], 0, false), 
-		_create_custom_spot(Constants.start_door[1], 0, false)
+		_create_custom_spot(Constants.start_door[0], 0, false, true, false), 
+		_create_custom_spot(Constants.start_door[1], 0, false, true, false)
 	] + spots + [
-		_create_custom_spot(Constants.end_door[0], 0, false),
-		_create_custom_spot(Constants.end_door[1], 0, false)
+		_create_custom_spot(Constants.end_door[0], 0, false, true, true),
+		_create_custom_spot(Constants.end_door[1], 0, false, true, true)
 	]
 
 func _add_intermediate_spots(starting_position, spots):
@@ -138,13 +139,14 @@ func _add_intermediate_spots(starting_position, spots):
 		all_spots.append(spot)
 		prev_spot = spot
 		
-
+	if spots[-1].is_balcony:
+		all_spots += _create_door_spot(true, spots[-1].room_id, _check_left(spots[-1]), true)
 	all_spots += _create_door_spot(false, spots[-1].room_id, false, true)
 	
 	return all_spots
 
 ### RETURN RESULT
-func get_spots_path():
+func get_spots_path(_left_start):
 	var spots = _generate_spots()
 	
 	var sorted_spots = _find_path(Constants.kadra_spawn_left_spots[-1], spots)
@@ -153,4 +155,6 @@ func get_spots_path():
 	
 	var full_path = _add_start_and_end_doors(path)
 	
+	if not _left_start:
+		full_path.invert()
 	return full_path

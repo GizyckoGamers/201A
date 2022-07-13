@@ -1,5 +1,5 @@
-const enemy_amount_per_wave = 2
-const wave_amount = 8
+const time_spacing = 10  # seconds
+const enemy_amount = 11
 
 const rooms_amount = 8
 
@@ -37,10 +37,13 @@ const room_door = [
 	Vector2(120, 440)  # after entrance
 ] 
 
-const balcony_spots = [
-	Vector2(40, 40),
+const balcony_left_spots = [
+	Vector2(40, 40)
+]
+
+const balcony_right_spots = [
 	Vector2(480, -40),
-	Vector2(320, 80),
+	Vector2(320, 40),
 ]
 
 const balcony_left_door = [

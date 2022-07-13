@@ -21,7 +21,9 @@ func update_vision_lines():
 	_enemy.draw_line(Vector2(), (result2.position - _enemy.global_position).rotated(-_enemy.rotation), Constants.color, 2.5)
 	_enemy.draw_circle((result1.position - _enemy.global_position).rotated(-_enemy.rotation), 10, Constants.color)
 	_enemy.draw_circle((result2.position - _enemy.global_position).rotated(-_enemy.rotation), 10, Constants.color)
-
+	
+	return 0
+	
 func get_spotting_distance():
 	var result = _space_state.intersect_ray(_enemy.global_position, _player.global_position)
 
@@ -31,4 +33,14 @@ func get_spotting_distance():
 		
 		if cos(Constants.view_angle/2) <= v1.dot(v2):
 			return _player.global_position.distance_to(_enemy.global_position)
+	
+	var direction1 = Vector2(5000, 0).rotated(_enemy.rotation + Constants.view_angle / 2)
+	var direction2 = Vector2(5000, 0).rotated(_enemy.rotation - Constants.view_angle / 2)
+	
+	var result1 = _space_state.intersect_ray(_enemy.global_position, _enemy.global_position + direction1)
+	var result2 = _space_state.intersect_ray(_enemy.global_position, _enemy.global_position + direction2)
+	
+	if result1.collider is Player or result2.collider is Player:
+		return _player.global_position.distance_to(_enemy.global_position)
+	
 	return 0

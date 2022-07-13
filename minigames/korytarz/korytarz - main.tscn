@@ -1,11 +1,11 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://minigames/korytarz/scripts/player/Player.gd" type="Script" id=1]
-[ext_resource path="res://minigames/korytarz/sprites/player/player.png" type="Texture" id=2]
 [ext_resource path="res://minigames/korytarz/scripts/main.gd" type="Script" id=3]
 [ext_resource path="res://minigames/korytarz/sprites/staircase_enemy/kieras(pudzian).png" type="Texture" id=4]
 [ext_resource path="res://minigames/korytarz/sprites/staircase_enemy/kierasv2.png" type="Texture" id=5]
 [ext_resource path="res://minigames/korytarz/sprites/tile_textures/wall.png" type="Texture" id=6]
+[ext_resource path="res://common/navi/Navi.gd" type="Script" id=7]
 [ext_resource path="res://common/joystick/Joystick.tscn" type="PackedScene" id=9]
 [ext_resource path="res://res/MenuTheme.tres" type="Theme" id=10]
 [ext_resource path="res://minigames/korytarz/scripts/timer/TimeText.gd" type="Script" id=11]
@@ -38,6 +38,9 @@ vertices = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [sub_resource type="ConvexPolygonShape2D" id=39]
+points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
+
+[sub_resource type="ConvexPolygonShape2D" id=41]
 points = PoolVector2Array( 0, 0, 40, 0, 40, 40, 0, 40 )
 
 [sub_resource type="NavigationPolygon" id=38]
@@ -131,6 +134,12 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 "one_way_margin": 1.0,
 "shape": SubResource( 39 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 41 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 14/z_index = 0
 15/name = "panele.png 15"
@@ -160,8 +169,14 @@ height = 26.0
 [sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 100, 220 )
 
+[sub_resource type="RectangleShape2D" id=40]
+extents = Vector2( 20, 80 )
+
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="Navi" type="Node2D" parent="."]
+script = ExtResource( 7 )
 
 [node name="LevelNavigation" type="Navigation2D" parent="."]
 
@@ -178,9 +193,6 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0, 2 )
 shape = SubResource( 27 )
-
-[node name="Sprite" type="Sprite" parent="Player"]
-texture = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 2 )
@@ -266,33 +278,72 @@ __meta__ = {
 "_editor_description_": "		"
 }
 
-[node name="CorridorLeft" type="Area2D" parent="."]
+[node name="Joystick" parent="." instance=ExtResource( 9 )]
+
+[node name="Staircase" type="Node2D" parent="."]
+
+[node name="StaircaseLeft" type="Area2D" parent="Staircase"]
 script = SubResource( 29 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CorridorLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Staircase/StaircaseLeft"]
 position = Vector2( -140, 500 )
 shape = SubResource( 28 )
 
-[node name="Sprite" type="Sprite" parent="CorridorLeft"]
+[node name="Sprite" type="Sprite" parent="Staircase/StaircaseLeft"]
 position = Vector2( -140, 348 )
 texture = ExtResource( 4 )
 
-[node name="CorridorRight" type="Area2D" parent="."]
+[node name="StaircaseRight" type="Area2D" parent="Staircase"]
 position = Vector2( 2480, 0 )
 script = SubResource( 29 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CorridorRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Staircase/StaircaseRight"]
 position = Vector2( -140, 500 )
 shape = SubResource( 28 )
 
-[node name="Sprite" type="Sprite" parent="CorridorRight"]
+[node name="Sprite" type="Sprite" parent="Staircase/StaircaseRight"]
 position = Vector2( -140, 338 )
 texture = ExtResource( 5 )
 
-[node name="Joystick" parent="." instance=ExtResource( 9 )]
+[node name="Railings" type="Node2D" parent="."]
+
+[node name="Railings1" type="Area2D" parent="Railings"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Railings/Railings1"]
+position = Vector2( 260, 0 )
+shape = SubResource( 40 )
+
+[node name="Railings2" type="Area2D" parent="Railings"]
+position = Vector2( 560, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Railings/Railings2"]
+position = Vector2( 260, 0 )
+shape = SubResource( 40 )
+
+[node name="Railings3" type="Area2D" parent="Railings"]
+position = Vector2( 1120, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Railings/Railings3"]
+position = Vector2( 260, 0 )
+shape = SubResource( 40 )
+
+[node name="Railings4" type="Area2D" parent="Railings"]
+position = Vector2( 1680, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Railings/Railings4"]
+position = Vector2( 260, 0 )
+shape = SubResource( 40 )
 
 [connection signal="pressed" from="Player/CanvasLayer/BackButton/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="Player/CanvasLayer/RestartButton/RestartButton" to="." method="_on_RestartButton_pressed"]
-[connection signal="body_entered" from="CorridorLeft" to="." method="_on_CorridorLeft_body_entered"]
-[connection signal="body_entered" from="CorridorRight" to="." method="_on_CorridorRight_body_entered"]
 [connection signal="move_vector" from="Joystick" to="Player" method="_on_Joystick_move_vector"]
+[connection signal="body_entered" from="Staircase/StaircaseLeft" to="." method="_on_Staircase_body_entered"]
+[connection signal="body_entered" from="Staircase/StaircaseRight" to="." method="_on_Staircase_body_entered"]
+[connection signal="body_entered" from="Railings/Railings1" to="." method="_on_Railings_body_entered"]
+[connection signal="body_exited" from="Railings/Railings1" to="." method="_on_Railings_body_exited"]
+[connection signal="body_entered" from="Railings/Railings2" to="." method="_on_Railings_body_entered"]
+[connection signal="body_exited" from="Railings/Railings2" to="." method="_on_Railings_body_exited"]
+[connection signal="body_entered" from="Railings/Railings3" to="." method="_on_Railings_body_entered"]
+[connection signal="body_exited" from="Railings/Railings3" to="." method="_on_Railings_body_exited"]
+[connection signal="body_entered" from="Railings/Railings4" to="." method="_on_Railings_body_entered"]
+[connection signal="body_exited" from="Railings/Railings4" to="." method="_on_Railings_body_exited"]

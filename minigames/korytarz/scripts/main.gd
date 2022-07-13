@@ -6,8 +6,6 @@ const EnemyFactory = preload("enemy/EnemyFactory.gd")
 const Player = preload("player/Player.gd")
 
 var _enemy_factory = null
-var _wave_cnt = 0
-var _time_per_wave = null # (in between waves) in seconds
 var _to_wave = 0  # in seconds
 var _game_state = "IN PROGRESS"
 
@@ -39,53 +37,56 @@ func _win_game():
 	_end_game()
 	_game_state = "WIN"
 
-func _generate_wave():
-	for i in range(EnemyConstants.enemy_amount_per_wave):
-		_enemy_factory.generate_enemy()
+func _add_enemy():
+	if _enemy_factory.get_enemies().size() == EnemyConstants.enemy_amount:
+		return
 	
-	for enemy in _enemy_factory.get_enemies():
+	var enemy = _enemy_factory.generate_enemy()
+	
+	if enemy:
 		add_child(enemy)
 
-func _ready():
+func _init():
 	randomize()
-	
-	_time_per_wave = TimerConstants.game_duration*60 / EnemyConstants.wave_amount
-	
+
+func _ready():
 	_enemy_factory = EnemyFactory.new()
 	
-	_generate_wave()
+	_add_enemy()
 
 func _process(delta):
-	var max_progress = 0
-	for enemy in _enemy_factory.get_enemies():
-		if enemy.check_done():
-			enemy.free()
-			_enemy_factory.remove_enemy(enemy)
-			continue
-			
-		if enemy.get_spotting_progress():
-			max_progress = max(max_progress, enemy.get_spotting_progress())
-	
-	_update_spotting(max_progress)
-	if max_progress == 100:
-		_loose_game()
-			
-	var timer = get_node("Player/CanvasLayer/TimeText")
-	if timer.check_finished():
-		_win_game()
+	if _game_state == "IN PROGRESS":
+		var max_progress = 0
+		for enemy in _enemy_factory.get_enemies():
+			if enemy.get_spotting_progress():
+				max_progress = max(max_progress, enemy.get_spotting_progress())
 		
-	_to_wave += delta
-	if _to_wave > _time_per_wave:
-		_generate_wave()
-		_to_wave -= _time_per_wave
+		_update_spotting(max_progress)
+		if max_progress == 100:
+			_loose_game()
+				
+		var timer = get_node("Player/CanvasLayer/TimeText")
+		if timer.check_finished():
+			_win_game()
+		
+		_to_wave += delta
+		if _to_wave > EnemyConstants.time_spacing:
+			_add_enemy()
+			_to_wave -= EnemyConstants.time_spacing
 
-func _on_CorridorLeft_body_entered(body):
+func _on_Staircase_body_entered(body):
 	if body is Player:
 		_loose_game()
 
-func _on_CorridorRight_body_entered(body):
+func _on_Railings_body_entered(body):
 	if body is Player:
-		_loose_game()
+		var player = get_node("Player")
+		player.slow_down()
+
+func _on_Railings_body_exited(body):
+	if body is Player:
+		var player = get_node("Player")
+		player.remove_slow()
 
 func _on_BackButton_pressed():
 	get_tree().change_scene("res://MainMenu.tscn")

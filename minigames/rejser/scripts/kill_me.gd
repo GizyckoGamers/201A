@@ -36,6 +36,7 @@ func _physics_process(delta):
 	calculate_steering(delta)
 	velocity += acceleration * delta
 	velocity = move_and_slide(velocity)
+	steering_angle = sign(steering_angle) * clamp(abs(sign(steering_angle) * -velocity.length()), 0, sign(steering_angle))
 
 func apply_friction():
 	if velocity.length() < 5:
