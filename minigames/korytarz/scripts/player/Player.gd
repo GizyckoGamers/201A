@@ -16,11 +16,19 @@ func slow_down():
 func remove_slow():
 	_is_slowed = false
 
+func _get_random_player_texture():
+	var link = Constants.player_texture_links[rand_range(0, Constants.player_texture_links.size())]
+	return load(link)
+
 func _init():
 	var room_id = rand_range(0, Constants.rooms_amount) as int 
 	
 	global_position = Vector2(Constants.starting_position.x + 280*room_id, 
 	Constants.starting_position.y)
+
+	var sprite = Sprite.new()
+	sprite.texture = _get_random_player_texture()
+	add_child(sprite)
 
 	_joystick = Joystick.new()
 

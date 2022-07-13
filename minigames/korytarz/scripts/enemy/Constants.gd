@@ -6,14 +6,14 @@ const rooms_amount = 8
 const movespeed = 160
 const rotationspeed = 1
 const spot_amount = 8
-const balcony_chance = 20 # %  - (out of 100) 
+const balcony_chance = 18 # %  - (out of 100) 
 
 const view_angle = PI/6
 const color = Color.black
 
-const spotting_time = 0.1  # seconds
+const spotting_time = 0.09  # seconds
 const close_distance = 300
-const distance_weight = 100
+const distance_weight = 110
 
 const start_door = [
 	Vector2(-120, 680), # before entrance

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-02793a5156caac9e05e72686b9a9e2c2.stex"
+path="res://.import/niemiec.png-471a9f6dda9338c7853e63fc134f8775.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/korytarz/sprites/player/player.png"
-dest_files=[ "res://.import/player.png-02793a5156caac9e05e72686b9a9e2c2.stex" ]
+source_file="res://minigames/korytarz/sprites/player_textures/niemiec.png"
+dest_files=[ "res://.import/niemiec.png-471a9f6dda9338c7853e63fc134f8775.stex" ]
 
 [params]
 
