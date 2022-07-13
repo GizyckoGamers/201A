@@ -138,7 +138,8 @@ func _add_intermediate_spots(starting_position, spots):
 		all_spots.append(spot)
 		prev_spot = spot
 		
-
+	if spots[-1].is_balcony:
+		all_spots += _create_door_spot(true, spots[-1].room_id, _check_left(spots[-1]), true)
 	all_spots += _create_door_spot(false, spots[-1].room_id, false, true)
 	
 	return all_spots
