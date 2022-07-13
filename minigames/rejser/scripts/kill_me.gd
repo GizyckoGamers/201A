@@ -50,7 +50,9 @@ func get_input():
 		turn += 1
 	if Input.is_action_pressed("left"):
 		turn -= 1
-	steer_direction = turn * deg2rad(steering_angle)
+	steer_direction = turn * deg2rad(steering_angle) / log(velocity.length())
+	if !is_zero_approx(steer_direction):
+		print("steer direction = ", rad2deg(steer_direction))
 	acceleration += transform.x * engine_power * Input.get_action_strength("up")
 	acceleration += transform.x * braking * Input.get_action_strength("down")
 	# TODO: rewrite so that it works
@@ -60,7 +62,7 @@ func get_input():
 	#if Input.is_action_just_pressed("left_key"):
 	#	gear = clamp(gear - 1, -1, max_gear)
 	
-	fully_stopping = Input.is_action_pressed("down")
+#	fully_stopping = Input.is_action_pressed("down")
 
 func calculate_steering(delta):
 	var rear_wheel = position - transform.x * wheel_base / 2.0
@@ -80,11 +82,11 @@ func calculate_steering(delta):
 		else:
 			velocity = Vector2.ZERO
 	rotation = new_heading.angle()
-	
-	
-func _ready():
-	assert_or_print(_get_power(1, 3709), 1)
 
+
+func _ready():
+	pass
 
 func _on_Area2D_body_exited(body: Node) -> void:
+	assert(false)
 	print("a cunt left the track: ", body)
