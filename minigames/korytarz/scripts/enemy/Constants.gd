@@ -37,8 +37,11 @@ const room_door = [
 	Vector2(120, 440)  # after entrance
 ] 
 
-const balcony_spots = [
-	Vector2(40, 40),
+const balcony_left_spots = [
+	Vector2(40, 40)
+]
+
+const balcony_right_spots = [
 	Vector2(480, -40),
 	Vector2(320, 40),
 ]

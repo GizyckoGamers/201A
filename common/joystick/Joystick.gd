@@ -19,11 +19,13 @@ export var fadeOutTimeMs = 500
 
 var _fadeOutTimer = 2000
 const _legalAreaBorder = Vector2(530, 220)
+const joy_deadzone = 0.01
 
 # YOU HAVE TO UPDATE THIS IF YOU CHANGE SIZE/SCALE OF BUTTON!!!
 const buttonSize = Vector2(256, 256)
 var initInnerCirclePos: Vector2
 var _pressed = false
+var _move_vector = Vector2()
 
 func _map(x: float, in_min: float, in_max: float, out_min: float, out_max: float) -> float:
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -70,3 +72,11 @@ func _input(event):
 func calculate_move_vector(event_position: Vector2):
 	var texture_center = $TouchScreenButton.position + (buttonSize / 2)
 	return (event_position - texture_center).clamped(buttonSize.x / 2)
+
+func move(move_vector):
+	_move_vector = move_vector
+
+func get_move():
+	if _move_vector.length() > joy_deadzone:
+		return _move_vector
+	return Vector2.ZERO

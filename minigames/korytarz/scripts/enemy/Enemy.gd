@@ -11,8 +11,8 @@ var _movement = null
 var _vision = null
 var _spotting = null
 var _left_start = null
-var _is_running = true
 var _texture = null
+var _is_running = true
 
 func _init(left_start, texture):
 	_left_start = left_start

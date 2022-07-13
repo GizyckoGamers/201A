@@ -54,23 +54,24 @@ func _ready():
 	_add_enemy()
 
 func _process(delta):
-	var max_progress = 0
-	for enemy in _enemy_factory.get_enemies():
-		if enemy.get_spotting_progress():
-			max_progress = max(max_progress, enemy.get_spotting_progress())
-	
-	_update_spotting(max_progress)
-	if max_progress == 100:
-		_loose_game()
-			
-	var timer = get_node("Player/CanvasLayer/TimeText")
-	if timer.check_finished():
-		_win_game()
-	
-	_to_wave += delta
-	if _to_wave > EnemyConstants.time_spacing:
-		_add_enemy()
-		_to_wave -= EnemyConstants.time_spacing
+	if _game_state == "IN PROGRESS":
+		var max_progress = 0
+		for enemy in _enemy_factory.get_enemies():
+			if enemy.get_spotting_progress():
+				max_progress = max(max_progress, enemy.get_spotting_progress())
+		
+		_update_spotting(max_progress)
+		if max_progress == 100:
+			_loose_game()
+				
+		var timer = get_node("Player/CanvasLayer/TimeText")
+		if timer.check_finished():
+			_win_game()
+		
+		_to_wave += delta
+		if _to_wave > EnemyConstants.time_spacing:
+			_add_enemy()
+			_to_wave -= EnemyConstants.time_spacing
 
 func _on_Staircase_body_entered(body):
 	if body is Player:
