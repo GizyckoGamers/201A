@@ -1,5 +1,5 @@
-const enemy_amount_per_wave = 2
-const wave_amount = 8
+const time_spacing = 10  # seconds
+const enemy_amount = 11
 
 const rooms_amount = 8
 

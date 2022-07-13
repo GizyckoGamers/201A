@@ -144,7 +144,7 @@ func _add_intermediate_spots(starting_position, spots):
 	return all_spots
 
 ### RETURN RESULT
-func get_spots_path():
+func get_spots_path(_left_start):
 	var spots = _generate_spots()
 	
 	var sorted_spots = _find_path(Constants.kadra_spawn_left_spots[-1], spots)
@@ -153,4 +153,6 @@ func get_spots_path():
 	
 	var full_path = _add_start_and_end_doors(path)
 	
+	if not _left_start:
+		full_path.invert()
 	return full_path

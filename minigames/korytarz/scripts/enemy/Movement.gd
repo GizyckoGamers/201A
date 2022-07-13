@@ -5,12 +5,9 @@ var _current_position = null
 var _spots = null
 var _path: Array = []
 
-func _init(level_navigation, initial_position, spots):
+func _init(level_navigation, initial_position):
 	_level_navigation = level_navigation
 	_current_position = initial_position
-	_spots = spots
-	
-	_path = _generate_path()
 
 func _generate_path():
 	if _level_navigation != null:
@@ -26,6 +23,10 @@ func _next_spot():
 			
 			if not _spots.empty():
 				_path = _generate_path()
+
+func load_spots(spots):
+	_spots = spots
+	_path = _generate_path()
 
 func update_position(new_position):
 	_current_position = new_position
