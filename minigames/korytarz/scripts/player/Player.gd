@@ -4,10 +4,17 @@ const Constants = preload("Constants.gd")
 const Joystick = preload("res://common/joystick/Joystick.gd")
 
 var _is_running = true
+var _is_slowed = false
 var _joystick = null
 
 func game_over():
 	_is_running = false
+
+func slow_down():
+	_is_slowed = true
+
+func remove_slow():
+	_is_slowed = false
 
 func _init():
 	var room_id = rand_range(0, Constants.rooms_amount) as int 
@@ -36,7 +43,11 @@ func _physics_process(delta):
 		
 		look_at(position + direction)
 		
-		direction = move_and_slide(direction * Constants.movespeed)
+		var movespeed = Constants.movespeed
+		if _is_slowed:
+			movespeed = Constants.slowedspeed
+		
+		direction = move_and_slide(direction * movespeed)
 
 func _on_Joystick_move_vector(move_vector):
 	_joystick.move(move_vector)

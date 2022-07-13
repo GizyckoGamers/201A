@@ -79,13 +79,19 @@ func _process(delta):
 		_generate_wave()
 		_to_wave -= _time_per_wave
 
-func _on_CorridorLeft_body_entered(body):
+func _on_Staircase_body_entered(body):
 	if body is Player:
 		_loose_game()
 
-func _on_CorridorRight_body_entered(body):
+func _on_Railings_body_entered(body):
 	if body is Player:
-		_loose_game()
+		var player = get_node("Player")
+		player.slow_down()
+
+func _on_Railings_body_exited(body):
+	if body is Player:
+		var player = get_node("Player")
+		player.remove_slow()
 
 func _on_BackButton_pressed():
 	get_tree().change_scene("res://MainMenu.tscn")

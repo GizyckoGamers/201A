@@ -31,4 +31,5 @@ func get_spotting_distance():
 		
 		if cos(Constants.view_angle/2) <= v1.dot(v2):
 			return _player.global_position.distance_to(_enemy.global_position)
+	
 	return 0
